@@ -4,928 +4,440 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>X-Zon | Women's Fashion</title>
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#1a0a0f" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <meta name="theme-color" content="#0891b2" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --dark: #1a0a0f;
-      --dark2: #2d1520;
-      --pink: #f2a7c3;
-      --pink2: #e8799f;
-      --rose: #ff4d6d;
-      --light: #fdf5f7;
-      --light2: #f9e8ee;
-      --text-dark: #1a0a0f;
-      --text-light: #fdf5f7;
-      --text-muted: #9e7a85;
-      --gold: #d4a843;
+      --teal: #0891b2;
+      --teal2: #06b6d4;
+      --teal3: #22d3ee;
+      --teal-light: #cffafe;
+      --teal-glow: rgba(8,145,178,0.3);
+      --dark: #0c1220;
+      --dark2: #111827;
+      --white: #ffffff;
+      --gray-light: #f8fafc;
+      --gray: #e2e8f0;
+      --gray2: #94a3b8;
+      --gray3: #64748b;
+      --text: #1e293b;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--dark);
-      color: var(--text-light);
-      min-height: 100vh;
-      cursor: none;
-    }
-
-    /* Custom cursor */
-    .cursor {
-      width: 12px; height: 12px;
-      background: var(--pink);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.15s ease;
-      mix-blend-mode: difference;
-    }
-    .cursor-ring {
-      width: 36px; height: 36px;
-      border: 1.5px solid var(--pink2);
-      border-radius: 50%;
-      position: fixed;
-      top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9998;
-      transition: all 0.3s ease;
-      mix-blend-mode: difference;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Poppins',sans-serif; background:var(--white); color:var(--text); overflow-x:hidden; }
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-track { background:#f1f5f9; }
+    ::-webkit-scrollbar-thumb { background:var(--teal); border-radius:3px; }
 
     /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 32px;
-      background: rgba(26, 10, 15, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(242, 167, 195, 0.15);
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 40px; height:68px;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--gray);
+      box-shadow:0 2px 20px rgba(0,0,0,0.06);
     }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-      color: var(--text-light);
-    }
-    .logo span { color: var(--pink); font-style: italic; }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
+    .logo { font-size:1.6rem; font-weight:900; letter-spacing:-1px; color:var(--dark); }
+    .logo span { color:var(--teal); }
+    .logo sub { font-size:0.55rem; font-weight:500; color:var(--gray2); vertical-align:middle; margin-left:4px; }
+    .nav-links { display:flex; gap:6px; list-style:none; }
     .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      transition: color 0.2s;
+      color:var(--gray3); text-decoration:none;
+      font-size:0.82rem; font-weight:500;
+      padding:7px 16px; border-radius:8px;
+      transition:all 0.2s;
     }
-    .nav-links a:hover { color: var(--pink); }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
+    .nav-links a:hover { color:var(--teal); background:var(--teal-light); }
+    .nav-right { display:flex; align-items:center; gap:12px; }
+    .search-wrap { position:relative; }
+    .search-wrap::before { content:'🔍'; position:absolute; left:12px; top:50%; transform:translateY(-50%); font-size:0.75rem; }
     .search-bar {
-      background: rgba(242, 167, 195, 0.08);
-      border: 1px solid rgba(242, 167, 195, 0.2);
-      border-radius: 50px;
-      padding: 8px 18px;
-      color: var(--text-light);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
-      width: 200px;
-      outline: none;
-      transition: all 0.3s;
+      background:var(--gray-light); border:1.5px solid var(--gray);
+      border-radius:50px; padding:9px 16px 9px 34px;
+      color:var(--text); font-family:'Poppins',sans-serif;
+      font-size:0.82rem; width:200px; outline:none; transition:all 0.3s;
     }
-    .search-bar::placeholder { color: var(--text-muted); }
-    .search-bar:focus {
-      border-color: var(--pink);
-      background: rgba(242, 167, 195, 0.12);
-      width: 240px;
+    .search-bar::placeholder { color:var(--gray2); }
+    .search-bar:focus { border-color:var(--teal); background:var(--white); width:240px; box-shadow:0 0 0 3px rgba(8,145,178,0.1); }
+    .nav-btn {
+      background:var(--teal); color:white; border:none;
+      padding:9px 20px; border-radius:50px;
+      font-family:'Poppins',sans-serif; font-size:0.82rem;
+      font-weight:600; cursor:pointer; transition:all 0.25s;
+      text-decoration:none; display:inline-block;
+      box-shadow:0 4px 14px var(--teal-glow);
     }
+    .nav-btn:hover { background:var(--teal2); transform:translateY(-1px); }
 
     /* HERO */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 100px 32px 60px;
-      position: relative;
-      overflow: hidden;
+      min-height:100vh; display:flex; align-items:center;
+      padding:88px 40px 60px; position:relative; overflow:hidden;
+      background:linear-gradient(135deg, #f0fdff 0%, #e0f7fa 40%, #ffffff 100%);
     }
-
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: 
-        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(232, 121, 159, 0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(255, 77, 109, 0.1) 0%, transparent 60%),
-        linear-gradient(135deg, #1a0a0f 0%, #2d1520 50%, #1a0a0f 100%);
+    .hero::before {
+      content:''; position:absolute;
+      width:600px; height:600px; border-radius:50%;
+      background:radial-gradient(circle, rgba(8,145,178,0.12) 0%, transparent 70%);
+      right:-100px; top:-100px;
     }
-
-    .hero-noise {
-      position: absolute; inset: 0;
-      opacity: 0.04;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    .hero::after {
+      content:''; position:absolute;
+      width:400px; height:400px; border-radius:50%;
+      background:radial-gradient(circle, rgba(34,211,238,0.1) 0%, transparent 70%);
+      left:-80px; bottom:-80px;
     }
-
-    .hero-content {
-      position: relative;
-      max-width: 560px;
-      animation: fadeUp 1s ease both;
-    }
-
+    .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; max-width:1200px; margin:0 auto; width:100%; position:relative; z-index:1; }
+    .hero-content { animation:fadeUp 0.8s ease both; }
     .hero-tag {
-      display: inline-block;
-      background: rgba(242, 167, 195, 0.15);
-      border: 1px solid rgba(242, 167, 195, 0.3);
-      color: var(--pink);
-      padding: 6px 16px;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(8,145,178,0.1); color:var(--teal);
+      padding:6px 16px; border-radius:50px;
+      font-size:0.72rem; font-weight:600;
+      letter-spacing:1px; text-transform:uppercase; margin-bottom:24px;
+      border:1px solid rgba(8,145,178,0.2);
     }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      font-weight: 900;
-      line-height: 1.05;
-      margin-bottom: 20px;
-      color: var(--text-light);
+    .dot { width:7px; height:7px; background:var(--teal2); border-radius:50%; animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+    .hero h1 { font-size:clamp(2.5rem,5vw,3.8rem); font-weight:900; line-height:1.1; margin-bottom:18px; letter-spacing:-1.5px; color:var(--dark); }
+    .hero h1 .teal { color:var(--teal); }
+    .hero p { font-size:1rem; color:var(--gray3); line-height:1.75; margin-bottom:32px; font-weight:400; }
+    .hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn-hero {
+      background:var(--teal); color:white; border:none;
+      padding:14px 30px; border-radius:12px;
+      font-family:'Poppins',sans-serif; font-size:0.9rem;
+      font-weight:700; cursor:pointer; transition:all 0.3s;
+      text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+      box-shadow:0 8px 24px var(--teal-glow);
     }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--pink);
+    .btn-hero:hover { background:var(--teal2); transform:translateY(-2px); box-shadow:0 14px 32px var(--teal-glow); }
+    .btn-hero2 {
+      background:transparent; color:var(--teal);
+      border:2px solid var(--teal); padding:14px 30px; border-radius:12px;
+      font-family:'Poppins',sans-serif; font-size:0.9rem;
+      font-weight:600; cursor:pointer; transition:all 0.3s;
+      text-decoration:none; display:inline-block;
     }
-
-    .hero p {
-      font-size: 1rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 36px;
-      font-weight: 300;
+    .btn-hero2:hover { background:var(--teal); color:white; }
+    .hero-visual { position:relative; display:flex; align-items:center; justify-content:center; }
+    .hero-card-main {
+      background:white; border-radius:24px;
+      box-shadow:0 24px 80px rgba(8,145,178,0.18), 0 4px 20px rgba(0,0,0,0.06);
+      padding:28px; width:100%; max-width:380px;
+      position:relative; z-index:2;
+      border:1px solid rgba(8,145,178,0.1);
     }
-
-    .hero-btns {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
+    .hero-card-top { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+    .hero-card-avatar { width:42px; height:42px; background:linear-gradient(135deg,var(--teal),var(--teal3)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; }
+    .hero-card-info h4 { font-size:0.88rem; font-weight:700; color:var(--dark); }
+    .hero-card-info p { font-size:0.72rem; color:var(--gray2); }
+    .hero-products-preview { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .preview-item { background:var(--gray-light); border-radius:14px; padding:14px; text-align:center; border:1px solid var(--gray); }
+    .preview-item .pi { font-size:2rem; margin-bottom:6px; }
+    .preview-item .pn { font-size:0.7rem; font-weight:600; color:var(--dark); }
+    .preview-item .pp { font-size:0.68rem; color:var(--teal); font-weight:700; }
+    .hero-badge {
+      position:absolute; top:-16px; right:-16px; z-index:3;
+      background:var(--teal); color:white;
+      padding:10px 14px; border-radius:14px;
+      font-size:0.72rem; font-weight:700;
+      box-shadow:0 8px 20px var(--teal-glow);
+      text-align:center; line-height:1.4;
     }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--pink2), var(--rose));
-      color: white;
-      border: none;
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: none;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 8px 30px rgba(255, 77, 109, 0.3);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(255, 77, 109, 0.45);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text-light);
-      border: 1px solid rgba(253, 245, 247, 0.25);
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: none;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn-outline:hover {
-      border-color: var(--pink);
-      color: var(--pink);
-    }
-
-    .hero-float {
-      position: absolute;
-      right: 8%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 380px;
-      height: 480px;
-      border-radius: 200px 200px 150px 150px;
-      background: linear-gradient(160deg, rgba(242,167,195,0.12), rgba(232,121,159,0.06));
-      border: 1px solid rgba(242, 167, 195, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .hero-float-inner {
-      font-family: 'Playfair Display', serif;
-      font-size: 8rem;
-      opacity: 0.15;
-      color: var(--pink);
-      font-style: italic;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(-50%) translateX(0); }
-      50% { transform: translateY(-53%) translateX(-8px); }
+    .hero-badge2 {
+      position:absolute; bottom:-16px; left:-16px; z-index:3;
+      background:white; color:var(--dark);
+      padding:10px 16px; border-radius:14px;
+      font-size:0.72rem; font-weight:600;
+      box-shadow:0 8px 30px rgba(0,0,0,0.1);
+      display:flex; align-items:center; gap:8px;
+      border:1px solid var(--gray);
     }
 
     /* STATS */
-    .stats {
-      display: flex;
-      gap: 0;
-      background: var(--light2);
-      padding: 0;
-      overflow: hidden;
+    .stats-bar {
+      background:var(--teal); padding:20px 40px;
+      display:flex; justify-content:center; gap:0;
     }
-
-    .stat-item {
-      flex: 1;
-      padding: 28px 24px;
-      text-align: center;
-      border-right: 1px solid rgba(26,10,15,0.1);
-      background: var(--light2);
-    }
-    .stat-item:last-child { border-right: none; }
-
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--dark);
-    }
-    .stat-num span { color: var(--rose); }
-
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 4px;
-    }
-
-    /* SECTION COMMON */
-    section {
-      padding: 80px 32px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 48px;
-    }
-
-    .section-tag {
-      font-size: 0.7rem;
-      color: var(--pink);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .view-all {
-      color: var(--pink);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.2s;
-    }
-    .view-all:hover { gap: 12px; }
+    .stat-item { flex:1; max-width:220px; text-align:center; border-right:1px solid rgba(255,255,255,0.2); padding:8px 0; }
+    .stat-item:last-child { border-right:none; }
+    .stat-num { font-size:1.8rem; font-weight:900; color:white; letter-spacing:-1px; }
+    .stat-num span { color:var(--teal-light); }
+    .stat-label { font-size:0.7rem; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:1px; margin-top:2px; font-weight:500; }
 
     /* CATEGORIES */
-    .categories-section {
-      background: var(--dark);
-    }
-
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
+    .cat-section { padding:80px 40px; background:var(--white); }
+    .section-tag { font-size:0.7rem; color:var(--teal); text-transform:uppercase; letter-spacing:2px; font-weight:700; margin-bottom:8px; }
+    .section-title { font-size:clamp(1.8rem,3vw,2.4rem); font-weight:800; color:var(--dark); letter-spacing:-1px; }
+    .section-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:40px; }
+    .view-all { color:var(--teal); text-decoration:none; font-size:0.83rem; font-weight:600; display:flex; align-items:center; gap:6px; transition:gap 0.2s; }
+    .view-all:hover { gap:12px; }
+    .cat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
     .cat-card {
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
-      height: 200px;
-      cursor: none;
-      transition: transform 0.3s;
+      border-radius:20px; padding:28px 20px 24px;
+      cursor:pointer; transition:all 0.3s;
+      border:2px solid var(--gray);
+      background:var(--gray-light);
+      position:relative; overflow:hidden; text-align:center;
     }
-    .cat-card:hover { transform: scale(1.02); }
-
-    .cat-card:nth-child(1) { background: linear-gradient(135deg, #2d1520, #4a1a30); }
-    .cat-card:nth-child(2) { background: linear-gradient(135deg, #1a2535, #253548); }
-    .cat-card:nth-child(3) { background: linear-gradient(135deg, #2a1a2d, #3d2445); }
-    .cat-card:nth-child(4) { background: linear-gradient(135deg, #1a2520, #253530); }
-
-    .cat-pattern {
-      position: absolute; inset: 0;
-      opacity: 0.08;
+    .cat-card::after {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:4px;
+      background:linear-gradient(90deg, var(--teal), var(--teal3));
+      transform:scaleX(0); transition:transform 0.3s; transform-origin:left;
     }
+    .cat-card:hover { border-color:var(--teal); background:white; transform:translateY(-4px); box-shadow:0 16px 40px rgba(8,145,178,0.12); }
+    .cat-card:hover::after { transform:scaleX(1); }
+    .cat-icon { font-size:2.8rem; margin-bottom:12px; display:block; }
+    .cat-name { font-size:1rem; font-weight:700; color:var(--dark); margin-bottom:4px; }
+    .cat-sub { font-size:0.73rem; color:var(--gray2); }
 
-    .cat-label {
-      position: absolute;
-      bottom: 20px; left: 20px;
-    }
-    .cat-label h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-    .cat-label p {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .cat-icon {
-      position: absolute;
-      top: 20px; right: 20px;
-      font-size: 2.5rem;
-      opacity: 0.6;
-    }
-
-    /* PRODUCTS SECTION */
-    .products-section {
-      background: var(--light);
-      color: var(--text-dark);
-    }
-
-    .products-section .section-title { color: var(--dark); }
-    .products-section .section-tag { color: var(--rose); }
-
-    .filter-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 36px;
-      flex-wrap: wrap;
-    }
-
+    /* PRODUCTS */
+    .prod-section { padding:80px 40px; background:var(--gray-light); }
+    .filter-tabs { display:flex; gap:8px; margin-bottom:32px; flex-wrap:wrap; }
     .filter-tab {
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: none;
-      border: 1.5px solid rgba(26,10,15,0.15);
-      background: transparent;
-      color: var(--text-muted);
-      font-family: 'DM Sans', sans-serif;
-      transition: all 0.2s;
+      padding:9px 22px; border-radius:50px;
+      font-size:0.8rem; font-weight:600; cursor:pointer;
+      border:2px solid var(--gray); background:white;
+      color:var(--gray3); font-family:'Poppins',sans-serif;
+      transition:all 0.2s;
     }
-    .filter-tab.active, .filter-tab:hover {
-      background: var(--dark);
-      color: var(--text-light);
-      border-color: var(--dark);
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px;
-    }
-
+    .filter-tab.active, .filter-tab:hover { background:var(--teal); color:white; border-color:var(--teal); box-shadow:0 4px 12px var(--teal-glow); }
+    .products-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px; }
     .product-card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 2px 20px rgba(26,10,15,0.07);
-      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-      cursor: none;
-      position: relative;
+      background:white; border-radius:20px; overflow:hidden;
+      box-shadow:0 2px 12px rgba(0,0,0,0.05);
+      transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      cursor:pointer; border:2px solid transparent;
     }
-    .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 50px rgba(26,10,15,0.15);
-    }
-
+    .product-card:hover { transform:translateY(-8px); box-shadow:0 20px 50px rgba(8,145,178,0.14); border-color:var(--teal); }
     .product-img-wrap {
-      position: relative;
-      background: var(--light2);
-      height: 280px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position:relative; background:var(--gray-light);
+      height:260px; overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
     }
-
-    .product-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .product-card:hover .product-img-wrap img {
-      transform: scale(1.06);
-    }
-
-    .product-img-placeholder {
-      font-size: 5rem;
-      opacity: 0.15;
-      color: var(--dark);
-    }
-
+    .product-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
+    .product-card:hover .product-img-wrap img { transform:scale(1.07); }
+    .product-img-placeholder { font-size:5rem; opacity:0.15; }
     .product-badge {
-      position: absolute;
-      top: 14px; left: 14px;
-      background: var(--rose);
-      color: white;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 50px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+      position:absolute; top:12px; left:12px;
+      background:var(--teal); color:white;
+      font-size:0.62rem; font-weight:700;
+      padding:5px 12px; border-radius:50px;
+      letter-spacing:0.5px; text-transform:uppercase;
     }
-
     .wishlist-btn {
-      position: absolute;
-      top: 14px; right: 14px;
-      width: 36px; height: 36px;
-      background: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      cursor: none;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      font-size: 1rem;
-      transition: all 0.2s;
+      position:absolute; top:12px; right:12px;
+      width:36px; height:36px; background:white;
+      border-radius:10px; display:flex; align-items:center;
+      justify-content:center; border:none; cursor:pointer;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1); font-size:0.95rem;
+      transition:all 0.2s;
     }
-    .wishlist-btn:hover { transform: scale(1.15); }
-    .wishlist-btn.active { background: #ffe0e8; }
-
-    .product-info {
-      padding: 18px 20px 20px;
-    }
-
-    .product-category {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-    }
-
-    .product-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-
-    .product-rating {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    .stars { color: var(--gold); font-size: 0.75rem; letter-spacing: 1px; }
-    .rating-count { font-size: 0.75rem; color: var(--text-muted); }
-
-    .product-price-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .price-group { display: flex; align-items: baseline; gap: 8px; }
-
-    .price {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 900;
-      color: var(--dark);
-    }
-
-    .price-old {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-decoration: line-through;
-    }
-
+    .wishlist-btn:hover { transform:scale(1.15); }
+    .wishlist-btn.active { background:#fff0f3; }
+    .product-info { padding:16px 18px 18px; }
+    .product-category { font-size:0.67rem; color:var(--teal); text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:5px; }
+    .product-name { font-size:0.95rem; font-weight:700; color:var(--dark); margin-bottom:8px; line-height:1.35; }
+    .product-rating { display:flex; align-items:center; gap:6px; margin-bottom:12px; }
+    .stars { color:#f59e0b; font-size:0.72rem; }
+    .rating-count { font-size:0.72rem; color:var(--gray2); }
+    .product-price-row { display:flex; align-items:center; justify-content:space-between; }
+    .price-group { display:flex; align-items:baseline; gap:6px; }
+    .price { font-size:1.2rem; font-weight:800; color:var(--dark); }
+    .price-old { font-size:0.8rem; color:var(--gray2); text-decoration:line-through; }
     .buy-btn {
-      background: linear-gradient(135deg, var(--dark), var(--dark2));
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 50px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: none;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
+      background:var(--teal); color:white; border:none;
+      padding:9px 18px; border-radius:10px;
+      font-family:'Poppins',sans-serif; font-size:0.78rem;
+      font-weight:700; cursor:pointer; transition:all 0.25s;
+      text-decoration:none; display:inline-block;
+      box-shadow:0 4px 12px var(--teal-glow);
     }
-    .buy-btn:hover {
-      background: linear-gradient(135deg, var(--pink2), var(--rose));
-      transform: scale(1.05);
-    }
+    .buy-btn:hover { background:var(--teal2); transform:scale(1.05); }
+    #emptyMsg { text-align:center; color:var(--gray2); padding:60px 0; display:none; font-size:0.95rem; }
+    #emptyMsg a { color:var(--teal); text-decoration:none; font-weight:700; }
 
-    /* ADD PRODUCT SECTION */
-    .add-section {
-      background: var(--dark2);
-      border-top: 1px solid rgba(242,167,195,0.1);
-    }
-
-    .add-section .section-title { color: var(--text-light); }
-    .add-section .section-tag { color: var(--pink); }
-
+    /* ADD PRODUCT */
+    .add-section { padding:80px 40px; background:white; }
     .add-form {
-      background: rgba(242, 167, 195, 0.05);
-      border: 1px solid rgba(242, 167, 195, 0.15);
-      border-radius: 24px;
-      padding: 40px;
-      max-width: 700px;
-      margin: 0 auto;
+      background:var(--gray-light); border:2px solid var(--gray);
+      border-radius:24px; padding:40px;
+      max-width:740px; margin:0 auto;
     }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .form-group.full { grid-column: 1 / -1; }
-
-    .form-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 500;
-    }
-
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+    .form-group { display:flex; flex-direction:column; gap:8px; }
+    .form-group.full { grid-column:1/-1; }
+    .form-label { font-size:0.72rem; color:var(--gray3); text-transform:uppercase; letter-spacing:1px; font-weight:700; }
     .form-input, .form-select, .form-textarea {
-      background: rgba(253, 245, 247, 0.06);
-      border: 1px solid rgba(242, 167, 195, 0.2);
-      border-radius: 12px;
-      padding: 12px 16px;
-      color: var(--text-light);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
-      outline: none;
-      transition: all 0.2s;
+      background:white; border:2px solid var(--gray);
+      border-radius:12px; padding:12px 16px;
+      color:var(--text); font-family:'Poppins',sans-serif;
+      font-size:0.88rem; outline:none; transition:all 0.2s;
     }
-    .form-input::placeholder, .form-textarea::placeholder { color: rgba(158, 122, 133, 0.6); }
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: var(--pink);
-      background: rgba(242, 167, 195, 0.08);
-    }
-    .form-select { appearance: none; cursor: none; }
-    .form-select option { background: var(--dark2); }
-    .form-textarea { resize: none; min-height: 90px; }
-
+    .form-input::placeholder,.form-textarea::placeholder { color:var(--gray2); }
+    .form-input:focus,.form-select:focus,.form-textarea:focus { border-color:var(--teal); box-shadow:0 0 0 3px rgba(8,145,178,0.1); }
+    .form-select { appearance:none; cursor:pointer; }
+    .form-textarea { resize:none; min-height:90px; }
     .img-upload-area {
-      border: 2px dashed rgba(242, 167, 195, 0.25);
-      border-radius: 16px;
-      padding: 36px;
-      text-align: center;
-      cursor: none;
-      transition: all 0.3s;
+      border:2.5px dashed var(--teal); border-radius:16px;
+      padding:32px; text-align:center; cursor:pointer;
+      transition:all 0.3s; background:white;
     }
-    .img-upload-area:hover {
-      border-color: var(--pink);
-      background: rgba(242, 167, 195, 0.05);
-    }
-    .upload-icon { font-size: 2.5rem; margin-bottom: 10px; opacity: 0.5; }
-    .upload-text { font-size: 0.85rem; color: var(--text-muted); }
-    .upload-text span { color: var(--pink); }
-
+    .img-upload-area:hover { background:rgba(8,145,178,0.04); border-color:var(--teal2); }
+    .upload-icon { font-size:2.4rem; margin-bottom:10px; }
+    .upload-text { font-size:0.85rem; color:var(--gray3); line-height:1.6; }
+    .upload-text span { color:var(--teal); font-weight:700; }
+    #uploadPreview { margin-top:14px; display:none; }
+    #previewImg { max-height:130px; border-radius:12px; object-fit:cover; border:3px solid var(--teal); }
+    #uploadFileName { font-size:0.75rem; color:var(--teal); margin-top:6px; font-weight:600; }
     .form-submit {
-      width: 100%;
-      background: linear-gradient(135deg, var(--pink2), var(--rose));
-      color: white;
-      border: none;
-      padding: 16px;
-      border-radius: 14px;
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: none;
-      transition: all 0.3s;
-      margin-top: 8px;
-      letter-spacing: 0.5px;
+      width:100%; background:linear-gradient(135deg,var(--teal),var(--teal2)); color:white; border:none;
+      padding:16px; border-radius:14px;
+      font-family:'Poppins',sans-serif; font-size:1rem;
+      font-weight:800; cursor:pointer; transition:all 0.3s;
+      margin-top:8px; letter-spacing:0.5px;
+      box-shadow:0 8px 24px var(--teal-glow);
     }
-    .form-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.4);
-    }
-
-    /* FOOTER */
-    footer {
-      background: #0f0508;
-      padding: 48px 32px 32px;
-      text-align: center;
-      border-top: 1px solid rgba(242,167,195,0.08);
-    }
-
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-    .footer-logo span { color: var(--pink); font-style: italic; }
-
-    .footer-tagline {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: 28px;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
-    }
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.8rem;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--pink); }
-
-    .footer-copy {
-      color: rgba(158, 122, 133, 0.5);
-      font-size: 0.75rem;
-    }
+    .form-submit:hover { transform:translateY(-2px); box-shadow:0 16px 40px var(--teal-glow); }
 
     /* MODAL */
     .modal-overlay {
-      position: fixed; inset: 0;
-      background: rgba(10, 3, 7, 0.85);
-      backdrop-filter: blur(10px);
-      z-index: 500;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      position:fixed; inset:0;
+      background:rgba(12,18,32,0.8);
+      backdrop-filter:blur(12px);
+      z-index:500; display:none;
+      align-items:center; justify-content:center; padding:20px;
     }
-    .modal-overlay.open { display: flex; }
-
+    .modal-overlay.open { display:flex; }
     .modal {
-      background: var(--light);
-      border-radius: 24px;
-      max-width: 860px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      color: var(--dark);
-      animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background:white; border-radius:24px;
+      max-width:820px; width:100%; max-height:90vh;
+      overflow-y:auto; display:grid; grid-template-columns:1fr 1fr;
+      animation:modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+      box-shadow:0 40px 100px rgba(8,145,178,0.2);
     }
+    @keyframes modalIn { from{opacity:0;transform:scale(0.9) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
+    .modal-img { background:var(--gray-light); border-radius:24px 0 0 24px; min-height:400px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .modal-img img { width:100%; height:100%; object-fit:cover; }
+    .modal-img-placeholder { font-size:8rem; opacity:0.1; }
+    .modal-content { padding:36px 32px; display:flex; flex-direction:column; }
+    .modal-close { align-self:flex-end; background:var(--gray-light); border:none; width:36px; height:36px; border-radius:10px; font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center; margin-bottom:20px; transition:background 0.2s; }
+    .modal-close:hover { background:var(--gray); }
+    .modal-cat { font-size:0.68rem; color:var(--teal); text-transform:uppercase; letter-spacing:1.5px; font-weight:700; margin-bottom:8px; }
+    .modal-title { font-size:1.5rem; font-weight:800; margin-bottom:12px; line-height:1.25; color:var(--dark); letter-spacing:-0.5px; }
+    .modal-rating { display:flex; align-items:center; gap:8px; margin-bottom:16px; }
+    .modal-desc { font-size:0.87rem; color:var(--gray3); line-height:1.75; margin-bottom:20px; }
+    .modal-price { font-size:2rem; font-weight:900; color:var(--dark); margin-bottom:4px; }
+    .modal-price-old { font-size:0.88rem; color:var(--gray2); text-decoration:line-through; margin-bottom:24px; }
+    .modal-buy-btn { background:linear-gradient(135deg,var(--teal),var(--teal2)); color:white; border:none; padding:16px; border-radius:14px; font-family:'Poppins',sans-serif; font-size:1rem; font-weight:800; cursor:pointer; transition:all 0.3s; text-align:center; text-decoration:none; display:block; box-shadow:0 8px 24px var(--teal-glow); margin-top:auto; }
+    .modal-buy-btn:hover { transform:translateY(-2px); box-shadow:0 14px 40px var(--teal-glow); }
 
-    @keyframes modalIn {
-      from { opacity: 0; transform: scale(0.9) translateY(20px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    .modal-img {
-      background: var(--light2);
-      border-radius: 24px 0 0 24px;
-      min-height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-    .modal-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .modal-img-placeholder { font-size: 8rem; opacity: 0.12; }
-
-    .modal-content {
-      padding: 36px 32px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .modal-close {
-      align-self: flex-end;
-      background: rgba(26,10,15,0.08);
-      border: none;
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      cursor: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      transition: background 0.2s;
-    }
-    .modal-close:hover { background: rgba(26,10,15,0.15); }
-
-    .modal-cat {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 8px;
-    }
-
-    .modal-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      line-height: 1.25;
-    }
-
-    .modal-rating {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .modal-desc {
-      font-size: 0.88rem;
-      color: #5a3a45;
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    .modal-price {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--dark);
-      margin-bottom: 6px;
-    }
-
-    .modal-price-old {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      text-decoration: line-through;
-      margin-bottom: 24px;
-    }
-
-    .modal-buy-btn {
-      background: linear-gradient(135deg, var(--pink2), var(--rose));
-      color: white;
-      border: none;
-      padding: 16px;
-      border-radius: 14px;
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: none;
-      transition: all 0.3s;
-      text-align: center;
-      text-decoration: none;
-      display: block;
-      box-shadow: 0 8px 24px rgba(255,77,109,0.25);
-      margin-top: auto;
-    }
-    .modal-buy-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 36px rgba(255,77,109,0.4);
-    }
+    /* FOOTER */
+    footer { background:var(--dark); padding:50px 40px 32px; }
+    .footer-inner { max-width:1100px; margin:0 auto; }
+    .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr; gap:40px; margin-bottom:40px; }
+    .footer-brand .footer-logo { font-size:1.6rem; font-weight:900; color:white; letter-spacing:-1px; margin-bottom:10px; }
+    .footer-brand .footer-logo span { color:var(--teal2); }
+    .footer-brand p { font-size:0.83rem; color:var(--gray2); line-height:1.7; }
+    .footer-col h4 { font-size:0.78rem; font-weight:700; color:white; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px; }
+    .footer-col a { display:block; color:var(--gray2); text-decoration:none; font-size:0.82rem; margin-bottom:10px; transition:color 0.2s; }
+    .footer-col a:hover { color:var(--teal3); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:24px; display:flex; align-items:center; justify-content:space-between; }
+    .footer-copy { font-size:0.75rem; color:var(--gray2); }
+    .footer-tags { display:flex; gap:8px; }
+    .footer-tag { background:rgba(8,145,178,0.15); color:var(--teal3); padding:4px 12px; border-radius:50px; font-size:0.7rem; font-weight:600; }
 
     /* TOAST */
-    .toast {
-      position: fixed;
-      bottom: 32px; left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: var(--dark);
-      color: var(--text-light);
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      z-index: 9000;
-      border: 1px solid rgba(242,167,195,0.2);
-      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-      white-space: nowrap;
-    }
-    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast { position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(100px); background:var(--dark); color:white; padding:12px 28px; border-radius:50px; font-size:0.83rem; font-weight:600; z-index:9000; border:1px solid rgba(8,145,178,0.3); transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1); white-space:nowrap; box-shadow:0 8px 30px rgba(0,0,0,0.2); }
+    .toast.show { transform:translateX(-50%) translateY(0); }
 
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* DELETE BUTTON */
+    .delete-btn { position:absolute; bottom:12px; right:12px; background:rgba(239,68,68,0.9); color:white; border:none; width:30px; height:30px; border-radius:8px; font-size:0.8rem; cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.2s; }
+    .product-card:hover .delete-btn { opacity:1; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
 
     /* MOBILE */
-    @media (max-width: 768px) {
-      nav { padding: 14px 20px; }
-      .nav-links { display: none; }
-      .search-bar { width: 140px; }
-      .hero { padding: 90px 20px 50px; }
-      .hero-float { display: none; }
-      section { padding: 60px 20px; }
-      .categories-grid { grid-template-columns: repeat(2,1fr); }
-      .form-row { grid-template-columns: 1fr; }
-      .modal { grid-template-columns: 1fr; }
-      .modal-img { border-radius: 24px 24px 0 0; min-height: 250px; }
-      .stats { flex-wrap: wrap; }
-      .stat-item { flex: 1 1 50%; }
-      body { cursor: auto; }
-      .cursor, .cursor-ring { display: none; }
-      * { cursor: auto !important; }
-      .add-form { padding: 24px 20px; }
+    @media(max-width:900px){
+      .hero-inner { grid-template-columns:1fr; }
+      .hero-visual { display:none; }
+    }
+    @media(max-width:768px){
+      nav { padding:0 16px; }
+      .nav-links { display:none; }
+      .search-bar { width:130px; }
+      .nav-btn { padding:8px 14px; font-size:0.78rem; }
+      .hero { padding:80px 20px 50px; }
+      section,.cat-section,.prod-section,.add-section { padding:60px 20px; }
+      .cat-grid { grid-template-columns:repeat(2,1fr); }
+      .form-row { grid-template-columns:1fr; }
+      .modal { grid-template-columns:1fr; }
+      .modal-img { border-radius:24px 24px 0 0; min-height:240px; }
+      .stats-bar { flex-wrap:wrap; padding:16px 20px; }
+      .stat-item { flex:1 1 50%; }
+      .add-form { padding:24px 16px; }
+      .footer-top { grid-template-columns:1fr; gap:24px; }
+      .footer-bottom { flex-direction:column; gap:12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Cursor -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
   <!-- NAV -->
   <nav>
-    <div class="logo">X<span>-Zon</span></div>
+    <div class="logo">X<span>-Zon</span><sub>Fashion</sub></div>
     <ul class="nav-links">
       <li><a href="#products">Shop</a></li>
       <li><a href="#categories">Categories</a></li>
       <li><a href="#add">Add Product</a></li>
     </ul>
     <div class="nav-right">
-      <input type="text" class="search-bar" placeholder="Search products..." id="searchInput" oninput="filterProducts()" />
+      <div class="search-wrap">
+        <input type="text" class="search-bar" placeholder="Search..." id="searchInput" oninput="filterProducts()" />
+      </div>
+      <a href="#add" class="nav-btn">+ Add Product</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-noise"></div>
-    <div class="hero-content">
-      <div class="hero-tag">✦ New Arrivals Every Week</div>
-      <h1>Where <em>Style</em><br>Meets Every<br>Occasion</h1>
-      <p>Handpicked women's fashion — kurtis, ethnic wear, western & more. All at Amazon's best prices, delivered to your door.</p>
-      <div class="hero-btns">
-        <a href="#products" class="btn-primary">Explore Collection →</a>
-        <a href="#add" class="btn-outline">Add Product</a>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag"><span class="dot"></span> New Arrivals Every Week</div>
+        <h1>India's Favourite<br><span class="teal">Women's Fashion</span><br>Store</h1>
+        <p>Handpicked kurtis, sarees, western wear & accessories — all Amazon verified. Buy with one click, delivered fast!</p>
+        <div class="hero-btns">
+          <a href="#products" class="btn-hero">Shop Now →</a>
+          <a href="#categories" class="btn-hero2">Browse Categories</a>
+        </div>
       </div>
-    </div>
-    <div class="hero-float">
-      <div class="hero-float-inner">✦</div>
+      <div class="hero-visual">
+        <div class="hero-card-main">
+          <div class="hero-badge">🔥 Hot Deals<br>Today!</div>
+          <div class="hero-badge2">✅ Amazon<br>Verified</div>
+          <div class="hero-card-top">
+            <div class="hero-card-avatar">👗</div>
+            <div class="hero-card-info">
+              <h4>X-Zon Collection</h4>
+              <p>Women's Fashion Store</p>
+            </div>
+          </div>
+          <div class="hero-products-preview">
+            <div class="preview-item"><div class="pi">👘</div><div class="pn">Kurtis</div><div class="pp">From ₹299</div></div>
+            <div class="preview-item"><div class="pi">🥻</div><div class="pn">Sarees</div><div class="pp">From ₹499</div></div>
+            <div class="preview-item"><div class="pi">👗</div><div class="pn">Western</div><div class="pp">From ₹399</div></div>
+            <div class="preview-item"><div class="pi">💍</div><div class="pn">Accessories</div><div class="pp">From ₹199</div></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- STATS -->
-  <div class="stats">
+  <div class="stats-bar">
     <div class="stat-item">
       <div class="stat-num" id="statProducts">0<span>+</span></div>
       <div class="stat-label">Products Listed</div>
@@ -935,7 +447,7 @@
       <div class="stat-label">Amazon Verified</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">Free<span>✦</span></div>
+      <div class="stat-num">Free<span>✓</span></div>
       <div class="stat-label">Delivery Available</div>
     </div>
     <div class="stat-item">
@@ -945,75 +457,63 @@
   </div>
 
   <!-- CATEGORIES -->
-  <section class="categories-section" id="categories">
+  <section class="cat-section" id="categories">
     <div class="section-header">
       <div>
-        <div class="section-tag">✦ Browse By</div>
-        <h2 class="section-title">Categories</h2>
+        <div class="section-tag">Browse By</div>
+        <h2 class="section-title">Shop by Category</h2>
       </div>
-      <a href="#products" class="view-all" style="color:var(--pink)">View All →</a>
+      <a href="#products" class="view-all">View All →</a>
     </div>
-    <div class="categories-grid">
+    <div class="cat-grid">
       <div class="cat-card" onclick="filterByCategory('Kurti')">
-        <div class="cat-icon">👘</div>
-        <div class="cat-label">
-          <h3>Kurtis</h3>
-          <p>Ethnic & Fusion</p>
-        </div>
+        <span class="cat-icon">👘</span>
+        <div class="cat-name">Kurtis</div>
+        <div class="cat-sub">Ethnic & Fusion Wear</div>
       </div>
       <div class="cat-card" onclick="filterByCategory('Saree')">
-        <div class="cat-icon">🥻</div>
-        <div class="cat-label">
-          <h3>Sarees</h3>
-          <p>Traditional Drapes</p>
-        </div>
+        <span class="cat-icon">🥻</span>
+        <div class="cat-name">Sarees</div>
+        <div class="cat-sub">Traditional & Designer</div>
       </div>
       <div class="cat-card" onclick="filterByCategory('Western')">
-        <div class="cat-icon">👗</div>
-        <div class="cat-label">
-          <h3>Western</h3>
-          <p>Tops, Dresses & More</p>
-        </div>
+        <span class="cat-icon">👗</span>
+        <div class="cat-name">Western</div>
+        <div class="cat-sub">Tops, Dresses & More</div>
       </div>
       <div class="cat-card" onclick="filterByCategory('Accessories')">
-        <div class="cat-icon">💍</div>
-        <div class="cat-label">
-          <h3>Accessories</h3>
-          <p>Jewellery & Bags</p>
-        </div>
+        <span class="cat-icon">💍</span>
+        <div class="cat-name">Accessories</div>
+        <div class="cat-sub">Jewellery & Handbags</div>
       </div>
     </div>
   </section>
 
   <!-- PRODUCTS -->
-  <section class="products-section" id="products">
+  <section class="prod-section" id="products">
     <div class="section-header">
       <div>
-        <div class="section-tag">✦ Shop Now</div>
+        <div class="section-tag">Shop Now</div>
         <h2 class="section-title">Our Collection</h2>
       </div>
-      <a href="#add" class="view-all" style="color:var(--rose)">+ Add Product</a>
+      <a href="#add" class="view-all">+ Add Product</a>
     </div>
     <div class="filter-tabs">
-      <button class="filter-tab active" onclick="setFilter('All', this)">All</button>
-      <button class="filter-tab" onclick="setFilter('Kurti', this)">Kurtis</button>
-      <button class="filter-tab" onclick="setFilter('Saree', this)">Sarees</button>
-      <button class="filter-tab" onclick="setFilter('Western', this)">Western</button>
-      <button class="filter-tab" onclick="setFilter('Accessories', this)">Accessories</button>
+      <button class="filter-tab active" onclick="setFilter('All',this)">All Products</button>
+      <button class="filter-tab" onclick="setFilter('Kurti',this)">Kurtis</button>
+      <button class="filter-tab" onclick="setFilter('Saree',this)">Sarees</button>
+      <button class="filter-tab" onclick="setFilter('Western',this)">Western</button>
+      <button class="filter-tab" onclick="setFilter('Accessories',this)">Accessories</button>
     </div>
-    <div class="products-grid" id="productsGrid">
-      <!-- Products render here -->
-    </div>
-    <p id="emptyMsg" style="text-align:center;color:var(--text-muted);padding:60px 0;display:none;font-size:1rem;">
-      No products yet. <a href="#add" style="color:var(--rose);text-decoration:none;font-weight:500;">Add your first product →</a>
-    </p>
+    <div class="products-grid" id="productsGrid"></div>
+    <p id="emptyMsg">Abhi koi product nahi hai. <a href="#add">Pehla product add karo →</a></p>
   </section>
 
   <!-- ADD PRODUCT -->
   <section class="add-section" id="add">
     <div class="section-header">
       <div>
-        <div class="section-tag">✦ Admin Panel</div>
+        <div class="section-tag">Admin Panel</div>
         <h2 class="section-title">Add New Product</h2>
       </div>
     </div>
@@ -1035,21 +535,21 @@
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Price (₹) *</label>
+          <label class="form-label">Selling Price (₹) *</label>
           <input type="number" class="form-input" id="pPrice" placeholder="e.g. 599" />
         </div>
         <div class="form-group">
-          <label class="form-label">Original Price (₹)</label>
+          <label class="form-label">Original MRP (₹)</label>
           <input type="number" class="form-input" id="pOldPrice" placeholder="e.g. 999" />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Rating (1-5)</label>
-          <input type="number" class="form-input" id="pRating" placeholder="4.5" min="1" max="5" step="0.1" />
+          <label class="form-label">Rating (1–5)</label>
+          <input type="number" class="form-input" id="pRating" placeholder="e.g. 4.5" min="1" max="5" step="0.1" />
         </div>
         <div class="form-group">
-          <label class="form-label">Reviews Count</label>
+          <label class="form-label">Total Reviews</label>
           <input type="number" class="form-input" id="pReviews" placeholder="e.g. 1234" />
         </div>
       </div>
@@ -1061,52 +561,78 @@
       </div>
       <div class="form-row">
         <div class="form-group full">
-          <label class="form-label">Product Image URL</label>
-          <input type="url" class="form-input" id="pImage" placeholder="https://example.com/image.jpg (or leave blank)" />
+          <label class="form-label">Product Image 📸</label>
+          <div class="img-upload-area" onclick="document.getElementById('pImageFile').click()">
+            <div class="upload-icon">📷</div>
+            <div class="upload-text">
+              <strong>Tap karke gallery se photo select karo</strong><br>
+              <span>JPG, PNG supported • Phone gallery se seedha upload</span>
+            </div>
+            <div id="uploadPreview">
+              <img id="previewImg" src="" />
+              <div id="uploadFileName"></div>
+            </div>
+          </div>
+          <input type="file" id="pImageFile" accept="image/*" style="display:none" onchange="handleImageUpload(this)" />
+          <input type="url" class="form-input" id="pImage" placeholder="Ya seedha image URL paste karo (optional)" style="margin-top:10px" />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group full">
-          <label class="form-label">Description</label>
-          <textarea class="form-textarea" id="pDesc" placeholder="Write a short description about the product..."></textarea>
+          <label class="form-label">Product Description</label>
+          <textarea class="form-textarea" id="pDesc" placeholder="Product ke baare mein kuch likho — fabric, size, occasion..."></textarea>
         </div>
       </div>
-      <button class="form-submit" onclick="addProduct()">✦ Add to X-Zon</button>
+      <button class="form-submit" onclick="addProduct()">✓ Add Product to X-Zon</button>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">X<span>-Zon</span></div>
-    <p class="footer-tagline">Women's Fashion. Amazon's Best Prices.</p>
-    <div class="footer-links">
-      <a href="#products">Shop</a>
-      <a href="#categories">Categories</a>
-      <a href="#add">Add Product</a>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">X<span>-Zon</span></div>
+          <p>India's growing women's fashion affiliate store. Handpicked products from Amazon, curated with love.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <a href="#products">All Products</a>
+          <a href="#categories">Kurtis</a>
+          <a href="#categories">Sarees</a>
+          <a href="#categories">Western</a>
+        </div>
+        <div class="footer-col">
+          <h4>Info</h4>
+          <a href="#add">Add Product</a>
+          <a href="#categories">Categories</a>
+          <a href="#">About X-Zon</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2025 X-Zon · Amazon Affiliate Store · All purchases redirect to Amazon.in</div>
+        <div class="footer-tags">
+          <span class="footer-tag">Amazon Affiliate</span>
+          <span class="footer-tag">100% Free</span>
+          <span class="footer-tag">Women's Fashion</span>
+        </div>
+      </div>
     </div>
-    <p class="footer-copy">© 2025 X-Zon · Amazon Affiliate Store · All links redirect to Amazon.in</p>
   </footer>
 
   <!-- MODAL -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-    <div class="modal" id="modal">
-      <div class="modal-img" id="modalImg">
-        <div class="modal-img-placeholder">👘</div>
-      </div>
+    <div class="modal">
+      <div class="modal-img" id="modalImg"><div class="modal-img-placeholder">👘</div></div>
       <div class="modal-content">
         <button class="modal-close" onclick="closeModalDirect()">✕</button>
         <div class="modal-cat" id="modalCat"></div>
         <h2 class="modal-title" id="modalTitle"></h2>
-        <div class="modal-rating">
-          <span class="stars" id="modalStars"></span>
-          <span class="rating-count" id="modalReviews"></span>
-        </div>
+        <div class="modal-rating"><span class="stars" id="modalStars"></span><span class="rating-count" id="modalReviews"></span></div>
         <p class="modal-desc" id="modalDesc"></p>
         <div class="modal-price" id="modalPrice"></div>
         <div class="modal-price-old" id="modalOldPrice"></div>
-        <a href="#" class="modal-buy-btn" id="modalBuyBtn" target="_blank" rel="noopener noreferrer">
-          Buy Now on Amazon →
-        </a>
+        <a href="#" class="modal-buy-btn" id="modalBuyBtn" target="_blank" rel="noopener noreferrer">🛒 Buy Now on Amazon →</a>
       </div>
     </div>
   </div>
@@ -1115,69 +641,39 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // ─── CURSOR ───
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx - 6 + 'px';
-      cursor.style.top = my - 6 + 'px';
-    });
-    (function animRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.left = rx - 18 + 'px';
-      ring.style.top = ry - 18 + 'px';
-      requestAnimationFrame(animRing);
-    })();
-
-    // ─── DATA ───
     let products = JSON.parse(localStorage.getItem('xzon_products') || '[]');
     let currentFilter = 'All';
+    let uploadedImageBase64 = null;
 
-    function saveProducts() {
-      localStorage.setItem('xzon_products', JSON.stringify(products));
-    }
+    function saveProducts() { localStorage.setItem('xzon_products', JSON.stringify(products)); }
+    function updateStats() { document.getElementById('statProducts').innerHTML = products.length + '<span>+</span>'; }
 
-    // ─── STATS ───
-    function updateStats() {
-      document.getElementById('statProducts').innerHTML = products.length + '<span>+</span>';
-    }
-
-    // ─── RENDER ───
     function getStars(r) {
-      const full = Math.floor(r);
-      const half = r % 1 >= 0.5 ? 1 : 0;
-      return '★'.repeat(full) + (half ? '½' : '') + '☆'.repeat(5 - full - half);
+      const f=Math.floor(r), h=r%1>=0.5?1:0;
+      return '★'.repeat(f)+(h?'½':'')+'☆'.repeat(5-f-h);
     }
 
     function renderProducts(list) {
-      const grid = document.getElementById('productsGrid');
-      const empty = document.getElementById('emptyMsg');
-      if (!list.length) {
-        grid.innerHTML = '';
-        empty.style.display = 'block';
-        return;
-      }
-      empty.style.display = 'none';
-      grid.innerHTML = list.map((p, i) => `
+      const grid=document.getElementById('productsGrid');
+      const empty=document.getElementById('emptyMsg');
+      if(!list.length){grid.innerHTML='';empty.style.display='block';return;}
+      empty.style.display='none';
+      grid.innerHTML=list.map(p=>`
         <div class="product-card" onclick="openModal(${p.id})">
           <div class="product-img-wrap">
-            ${p.image
-              ? `<img src="${p.image}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" /><div class="product-img-placeholder" style="display:none">👘</div>`
-              : `<div class="product-img-placeholder">👘</div>`}
-            ${p.oldPrice ? `<div class="product-badge">SALE</div>` : ''}
-            <button class="wishlist-btn" onclick="toggleWish(event, ${p.id})" id="wish_${p.id}">🤍</button>
+            ${p.image?`<img src="${p.image}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="product-img-placeholder" style="display:none">👘</div>`:`<div class="product-img-placeholder">👘</div>`}
+            ${p.oldPrice?`<div class="product-badge">SALE</div>`:''}
+            <button class="wishlist-btn" onclick="toggleWish(event,${p.id})" id="wish_${p.id}">🤍</button>
+            <button class="delete-btn" onclick="deleteProduct(event,${p.id})">🗑</button>
           </div>
           <div class="product-info">
             <div class="product-category">${p.category}</div>
             <div class="product-name">${p.name}</div>
-            ${p.rating ? `<div class="product-rating"><span class="stars">${getStars(p.rating)}</span><span class="rating-count">(${p.reviews || 0})</span></div>` : ''}
+            ${p.rating?`<div class="product-rating"><span class="stars">${getStars(p.rating)}</span><span class="rating-count">(${p.reviews||0})</span></div>`:''}
             <div class="product-price-row">
               <div class="price-group">
                 <span class="price">₹${p.price}</span>
-                ${p.oldPrice ? `<span class="price-old">₹${p.oldPrice}</span>` : ''}
+                ${p.oldPrice?`<span class="price-old">₹${p.oldPrice}</span>`:''}
               </div>
               <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="buy-btn" onclick="event.stopPropagation()">Buy Now</a>
             </div>
@@ -1187,118 +683,110 @@
     }
 
     function getFiltered() {
-      let list = products;
-      const q = document.getElementById('searchInput').value.toLowerCase();
-      if (currentFilter !== 'All') list = list.filter(p => p.category === currentFilter);
-      if (q) list = list.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+      let list=products;
+      const q=document.getElementById('searchInput').value.toLowerCase();
+      if(currentFilter!=='All') list=list.filter(p=>p.category===currentFilter);
+      if(q) list=list.filter(p=>p.name.toLowerCase().includes(q)||p.category.toLowerCase().includes(q));
       return list;
     }
 
-    function refresh() {
-      renderProducts(getFiltered());
-      updateStats();
+    function refresh(){renderProducts(getFiltered());updateStats();}
+
+    function setFilter(f,btn){
+      currentFilter=f;
+      document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+      btn.classList.add('active'); refresh();
     }
 
-    // ─── FILTER ───
-    function setFilter(f, btn) {
-      currentFilter = f;
-      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      refresh();
+    function filterByCategory(cat){
+      currentFilter=cat;
+      document.querySelectorAll('.filter-tab').forEach(t=>t.classList.toggle('active',t.textContent.includes(cat)));
+      document.getElementById('products').scrollIntoView({behavior:'smooth'}); refresh();
     }
 
-    function filterByCategory(cat) {
-      currentFilter = cat;
-      document.querySelectorAll('.filter-tab').forEach(t => {
-        t.classList.toggle('active', t.textContent.includes(cat));
-      });
-      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-      refresh();
-    }
+    function filterProducts(){refresh();}
 
-    function filterProducts() { refresh(); }
-
-    // ─── ADD PRODUCT ───
-    function addProduct() {
-      const name = document.getElementById('pName').value.trim();
-      const link = document.getElementById('pLink').value.trim();
-      const price = document.getElementById('pPrice').value.trim();
-      if (!name || !link || !price) {
-        showToast('⚠️ Please fill Name, Price & Affiliate Link');
-        return;
-      }
-      const p = {
-        id: Date.now(),
-        name,
-        category: document.getElementById('pCategory').value,
-        price: parseInt(price),
-        oldPrice: document.getElementById('pOldPrice').value || null,
-        rating: parseFloat(document.getElementById('pRating').value) || null,
-        reviews: document.getElementById('pReviews').value || null,
-        link,
-        image: document.getElementById('pImage').value.trim() || null,
-        desc: document.getElementById('pDesc').value.trim() || 'Premium quality product from Amazon.',
+    function handleImageUpload(input){
+      const file=input.files[0]; if(!file)return;
+      const reader=new FileReader();
+      reader.onload=function(e){
+        uploadedImageBase64=e.target.result;
+        document.getElementById('previewImg').src=uploadedImageBase64;
+        document.getElementById('uploadPreview').style.display='block';
+        document.getElementById('uploadFileName').textContent='✅ '+file.name;
+        document.getElementById('pImage').value='';
+        document.getElementById('pImage').placeholder='Image upload ho gayi ✅';
       };
-      products.unshift(p);
-      saveProducts();
-      ['pName','pPrice','pOldPrice','pRating','pReviews','pLink','pImage','pDesc'].forEach(id => document.getElementById(id).value = '');
-      currentFilter = 'All';
-      document.querySelectorAll('.filter-tab').forEach((t,i) => t.classList.toggle('active', i===0));
-      refresh();
-      showToast('✦ Product added to X-Zon!');
-      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+      reader.readAsDataURL(file);
     }
 
-    // ─── MODAL ───
-    function openModal(id) {
-      const p = products.find(x => x.id === id);
-      if (!p) return;
-      document.getElementById('modalCat').textContent = p.category;
-      document.getElementById('modalTitle').textContent = p.name;
-      document.getElementById('modalStars').textContent = p.rating ? getStars(p.rating) : '★★★★★';
-      document.getElementById('modalReviews').textContent = p.reviews ? `(${p.reviews} reviews)` : '';
-      document.getElementById('modalDesc').textContent = p.desc || '';
-      document.getElementById('modalPrice').textContent = '₹' + p.price;
-      document.getElementById('modalOldPrice').textContent = p.oldPrice ? 'MRP ₹' + p.oldPrice : '';
-      document.getElementById('modalBuyBtn').href = p.link;
-      const imgEl = document.getElementById('modalImg');
-      imgEl.innerHTML = p.image
-        ? `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover" />`
-        : `<div class="modal-img-placeholder">👘</div>`;
-      document.getElementById('modalOverlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
+    function addProduct(){
+      const name=document.getElementById('pName').value.trim();
+      const link=document.getElementById('pLink').value.trim();
+      const price=document.getElementById('pPrice').value.trim();
+      if(!name||!link||!price){showToast('⚠️ Name, Price & Link zaroori hai!');return;}
+      const finalImage=uploadedImageBase64||document.getElementById('pImage').value.trim()||null;
+      const p={
+        id:Date.now(), name,
+        category:document.getElementById('pCategory').value,
+        price:parseInt(price),
+        oldPrice:document.getElementById('pOldPrice').value||null,
+        rating:parseFloat(document.getElementById('pRating').value)||null,
+        reviews:document.getElementById('pReviews').value||null,
+        link, image:finalImage,
+        desc:document.getElementById('pDesc').value.trim()||'Premium quality product from Amazon.',
+      };
+      products.unshift(p); saveProducts();
+      ['pName','pPrice','pOldPrice','pRating','pReviews','pLink','pImage','pDesc'].forEach(id=>document.getElementById(id).value='');
+      document.getElementById('pImageFile').value='';
+      document.getElementById('uploadPreview').style.display='none';
+      document.getElementById('pImage').placeholder='Ya seedha image URL paste karo (optional)';
+      uploadedImageBase64=null;
+      currentFilter='All';
+      document.querySelectorAll('.filter-tab').forEach((t,i)=>t.classList.toggle('active',i===0));
+      refresh(); showToast('✅ Product add ho gaya!');
+      document.getElementById('products').scrollIntoView({behavior:'smooth'});
     }
 
-    function closeModal(e) {
-      if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
-    }
-    function closeModalDirect() {
-      document.getElementById('modalOverlay').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // ─── WISHLIST ───
-    function toggleWish(e, id) {
+    function deleteProduct(e,id){
       e.stopPropagation();
-      const btn = document.getElementById('wish_' + id);
-      if (btn.classList.toggle('active')) {
-        btn.textContent = '❤️';
-        showToast('Added to wishlist ❤️');
-      } else {
-        btn.textContent = '🤍';
-        showToast('Removed from wishlist');
-      }
+      if(!confirm('Is product ko delete karna chahte ho?'))return;
+      products=products.filter(p=>p.id!==id); saveProducts(); refresh();
+      showToast('🗑 Product delete ho gaya');
     }
 
-    // ─── TOAST ───
-    function showToast(msg) {
-      const t = document.getElementById('toast');
-      t.textContent = msg;
-      t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2800);
+    function openModal(id){
+      const p=products.find(x=>x.id===id); if(!p)return;
+      document.getElementById('modalCat').textContent=p.category;
+      document.getElementById('modalTitle').textContent=p.name;
+      document.getElementById('modalStars').textContent=p.rating?getStars(p.rating):'★★★★★';
+      document.getElementById('modalReviews').textContent=p.reviews?`(${p.reviews} reviews)`:'';
+      document.getElementById('modalDesc').textContent=p.desc||'';
+      document.getElementById('modalPrice').textContent='₹'+p.price;
+      document.getElementById('modalOldPrice').textContent=p.oldPrice?'MRP ₹'+p.oldPrice:'';
+      document.getElementById('modalBuyBtn').href=p.link;
+      document.getElementById('modalImg').innerHTML=p.image
+        ?`<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover"/>`
+        :`<div class="modal-img-placeholder">👘</div>`;
+      document.getElementById('modalOverlay').classList.add('open');
+      document.body.style.overflow='hidden';
+    }
+    function closeModal(e){if(e.target===document.getElementById('modalOverlay'))closeModalDirect();}
+    function closeModalDirect(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+
+    function toggleWish(e,id){
+      e.stopPropagation();
+      const btn=document.getElementById('wish_'+id);
+      if(btn.classList.toggle('active')){btn.textContent='❤️';showToast('Wishlist mein add ho gaya ❤️');}
+      else{btn.textContent='🤍';showToast('Wishlist se remove ho gaya');}
     }
 
-    // ─── INIT ───
+    function showToast(msg){
+      const t=document.getElementById('toast');
+      t.textContent=msg; t.classList.add('show');
+      setTimeout(()=>t.classList.remove('show'),2800);
+    }
+
     refresh();
   </script>
 </body>
