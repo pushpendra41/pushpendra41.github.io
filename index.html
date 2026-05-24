@@ -4,570 +4,527 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>X-Zon | Women's Fashion</title>
-  <meta name="theme-color" content="#0891b2" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --teal: #0891b2; --teal2: #06b6d4; --teal3: #22d3ee;
-      --teal-light: #cffafe; --teal-glow: rgba(8,145,178,0.3);
-      --dark: #0c1220; --dark2: #111827; --white: #ffffff;
-      --gray-light: #f8fafc; --gray: #e2e8f0; --gray2: #94a3b8;
-      --gray3: #64748b; --text: #1e293b;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { font-family:'Poppins',sans-serif; background:var(--white); color:var(--text); overflow-x:hidden; }
-    ::-webkit-scrollbar { width:5px; }
-    ::-webkit-scrollbar-track { background:#f1f5f9; }
-    ::-webkit-scrollbar-thumb { background:var(--teal); border-radius:3px; }
-
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:200;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0 16px; height:58px;
-      background:rgba(255,255,255,0.97);
-      backdrop-filter:blur(20px);
-      border-bottom:1px solid var(--gray);
-      box-shadow:0 2px 20px rgba(0,0,0,0.06);
-    }
-    .logo { font-size:1.4rem; font-weight:900; letter-spacing:-1px; color:var(--dark); }
-    .logo span { color:var(--teal); }
-    .nav-links { display:flex; gap:4px; list-style:none; }
-    .nav-links a { color:var(--gray3); text-decoration:none; font-size:0.78rem; font-weight:500; padding:6px 10px; border-radius:8px; transition:all 0.2s; }
-    .nav-links a:hover { color:var(--teal); background:var(--teal-light); }
-    .nav-right { display:flex; align-items:center; gap:8px; }
-    .search-wrap { position:relative; }
-    .search-wrap::before { content:'🔍'; position:absolute; left:10px; top:50%; transform:translateY(-50%); font-size:0.68rem; }
-    .search-bar { background:var(--gray-light); border:1.5px solid var(--gray); border-radius:50px; padding:7px 12px 7px 28px; color:var(--text); font-family:'Poppins',sans-serif; font-size:0.78rem; width:140px; outline:none; transition:all 0.3s; }
-    .search-bar::placeholder { color:var(--gray2); }
-    .search-bar:focus { border-color:var(--teal); background:var(--white); width:180px; }
-    .admin-login-btn { background:var(--teal); color:white; border:none; padding:7px 14px; border-radius:50px; font-family:'Poppins',sans-serif; font-size:0.75rem; font-weight:600; cursor:pointer; transition:all 0.25s; box-shadow:0 4px 14px var(--teal-glow); white-space:nowrap; }
-    .admin-login-btn:hover { background:var(--teal2); }
-
-    .hero { min-height:100vh; display:flex; align-items:center; padding:75px 16px 50px; position:relative; overflow:hidden; background:linear-gradient(135deg, #f0fdff 0%, #e0f7fa 40%, #ffffff 100%); }
-    .hero::before { content:''; position:absolute; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle, rgba(8,145,178,0.12) 0%, transparent 70%); right:-100px; top:-100px; }
-    .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; max-width:1200px; margin:0 auto; width:100%; position:relative; z-index:1; }
-    .hero-content { animation:fadeUp 0.8s ease both; }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-    .hero-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(8,145,178,0.1); color:var(--teal); padding:5px 14px; border-radius:50px; font-size:0.68rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:18px; border:1px solid rgba(8,145,178,0.2); }
-    .dot { width:7px; height:7px; background:var(--teal2); border-radius:50%; animation:pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
-    .hero h1 { font-size:clamp(1.8rem,5vw,3.2rem); font-weight:900; line-height:1.1; margin-bottom:14px; letter-spacing:-1.5px; color:var(--dark); }
-    .hero h1 .teal { color:var(--teal); }
-    .hero p { font-size:0.9rem; color:var(--gray3); line-height:1.75; margin-bottom:26px; }
-    .hero-btns { display:flex; gap:10px; flex-wrap:wrap; }
-    .btn-hero { background:var(--teal); color:white; border:none; padding:12px 24px; border-radius:12px; font-family:'Poppins',sans-serif; font-size:0.85rem; font-weight:700; cursor:pointer; transition:all 0.3s; text-decoration:none; display:inline-flex; align-items:center; gap:6px; box-shadow:0 8px 24px var(--teal-glow); }
-    .btn-hero:hover { background:var(--teal2); transform:translateY(-2px); }
-    .btn-hero2 { background:transparent; color:var(--teal); border:2px solid var(--teal); padding:12px 24px; border-radius:12px; font-family:'Poppins',sans-serif; font-size:0.85rem; font-weight:600; cursor:pointer; transition:all 0.3s; text-decoration:none; display:inline-block; }
-    .btn-hero2:hover { background:var(--teal); color:white; }
-    .hero-visual { position:relative; display:flex; align-items:center; justify-content:center; }
-    .hero-card-main { background:white; border-radius:22px; box-shadow:0 24px 80px rgba(8,145,178,0.18); padding:22px; width:100%; max-width:320px; position:relative; z-index:2; border:1px solid rgba(8,145,178,0.1); }
-    .hero-card-top { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
-    .hero-card-avatar { width:38px; height:38px; background:linear-gradient(135deg,var(--teal),var(--teal3)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1rem; }
-    .hero-card-info h4 { font-size:0.82rem; font-weight:700; color:var(--dark); }
-    .hero-card-info p { font-size:0.68rem; color:var(--gray2); }
-    .hero-products-preview { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-    .preview-item { background:var(--gray-light); border-radius:12px; padding:10px; text-align:center; border:1px solid var(--gray); }
-    .preview-item .pi { font-size:1.6rem; margin-bottom:4px; }
-    .preview-item .pn { font-size:0.65rem; font-weight:600; color:var(--dark); }
-    .preview-item .pp { font-size:0.62rem; color:var(--teal); font-weight:700; }
-
-    .stats-bar { background:var(--teal); padding:14px 16px; display:flex; justify-content:center; flex-wrap:wrap; }
-    .stat-item { flex:1; min-width:100px; max-width:200px; text-align:center; border-right:1px solid rgba(255,255,255,0.2); padding:6px 0; }
-    .stat-item:last-child { border-right:none; }
-    .stat-num { font-size:1.4rem; font-weight:900; color:white; }
-    .stat-num span { color:var(--teal-light); }
-    .stat-label { font-size:0.6rem; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:1px; margin-top:1px; font-weight:500; }
-
-    .cat-section { padding:50px 16px; background:var(--white); }
-    .section-tag { font-size:0.65rem; color:var(--teal); text-transform:uppercase; letter-spacing:2px; font-weight:700; margin-bottom:5px; }
-    .section-title { font-size:clamp(1.4rem,3vw,2rem); font-weight:800; color:var(--dark); letter-spacing:-1px; }
-    .section-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:24px; }
-    .view-all { color:var(--teal); text-decoration:none; font-size:0.78rem; font-weight:600; }
-    .cat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
-    @media(min-width:640px){ .cat-grid { grid-template-columns:repeat(4,1fr); } }
-    .cat-card { border-radius:14px; padding:18px 12px 16px; cursor:pointer; transition:all 0.3s; border:2px solid var(--gray); background:var(--gray-light); position:relative; overflow:hidden; text-align:center; }
-    .cat-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--teal), var(--teal3)); transform:scaleX(0); transition:transform 0.3s; transform-origin:left; }
-    .cat-card:hover { border-color:var(--teal); background:white; transform:translateY(-3px); box-shadow:0 10px 25px rgba(8,145,178,0.12); }
-    .cat-card:hover::after { transform:scaleX(1); }
-    .cat-icon { font-size:2rem; margin-bottom:8px; display:block; }
-    .cat-name { font-size:0.88rem; font-weight:700; color:var(--dark); margin-bottom:3px; }
-    .cat-sub { font-size:0.65rem; color:var(--gray2); }
-
-    .prod-section { padding:50px 16px; background:var(--gray-light); }
-    .filter-tabs { display:flex; gap:7px; margin-bottom:20px; flex-wrap:wrap; }
-    .filter-tab { padding:7px 16px; border-radius:50px; font-size:0.75rem; font-weight:600; cursor:pointer; border:2px solid var(--gray); background:white; color:var(--gray3); font-family:'Poppins',sans-serif; transition:all 0.2s; }
-    .filter-tab.active, .filter-tab:hover { background:var(--teal); color:white; border-color:var(--teal); box-shadow:0 4px 10px var(--teal-glow); }
-    .products-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
-    @media(min-width:640px){ .products-grid { grid-template-columns:repeat(3,1fr); } }
-    @media(min-width:1024px){ .products-grid { grid-template-columns:repeat(4,1fr); } }
-    .product-card { background:white; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.05); transition:all 0.3s; cursor:pointer; border:2px solid transparent; }
-    .product-card:hover { transform:translateY(-5px); box-shadow:0 14px 35px rgba(8,145,178,0.14); border-color:var(--teal); }
-    .product-img-wrap { position:relative; background:var(--gray-light); height:170px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
-    @media(min-width:640px){ .product-img-wrap { height:210px; } }
-    .product-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
-    .product-card:hover .product-img-wrap img { transform:scale(1.07); }
-    .product-img-placeholder { font-size:3.5rem; opacity:0.15; }
-    .product-badge { position:absolute; top:8px; left:8px; background:var(--teal); color:white; font-size:0.56rem; font-weight:700; padding:4px 9px; border-radius:50px; letter-spacing:0.5px; text-transform:uppercase; }
-    .wishlist-btn { position:absolute; top:8px; right:8px; width:30px; height:30px; background:white; border-radius:8px; display:flex; align-items:center; justify-content:center; border:none; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.1); font-size:0.82rem; transition:all 0.2s; }
-    .wishlist-btn:hover { transform:scale(1.15); }
-    .wishlist-btn.active { background:#fff0f3; }
-    .product-info { padding:10px 12px 12px; }
-    .product-category { font-size:0.6rem; color:var(--teal); text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:3px; }
-    .product-name { font-size:0.8rem; font-weight:700; color:var(--dark); margin-bottom:5px; line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-    .product-rating { display:flex; align-items:center; gap:4px; margin-bottom:8px; }
-    .stars { color:#f59e0b; font-size:0.65rem; }
-    .rating-count { font-size:0.65rem; color:var(--gray2); }
-    .product-price-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:5px; }
-    .price-group { display:flex; align-items:baseline; gap:4px; }
-    .price { font-size:0.95rem; font-weight:800; color:var(--dark); }
-    .price-old { font-size:0.72rem; color:var(--gray2); text-decoration:line-through; }
-    .buy-btn { background:var(--teal); color:white; border:none; padding:6px 12px; border-radius:8px; font-family:'Poppins',sans-serif; font-size:0.7rem; font-weight:700; cursor:pointer; transition:all 0.25s; text-decoration:none; display:inline-block; box-shadow:0 4px 10px var(--teal-glow); }
-    .buy-btn:hover { background:var(--teal2); transform:scale(1.05); }
-    #emptyMsg { text-align:center; color:var(--gray2); padding:50px 0; display:none; font-size:0.88rem; }
-
-    .loading-wrap { text-align:center; padding:50px 20px; color:var(--gray2); }
-    .spinner { width:38px; height:38px; border:3px solid var(--gray); border-top-color:var(--teal); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 14px; }
-    @keyframes spin { to{transform:rotate(360deg)} }
-
-    .pw-overlay { position:fixed; inset:0; background:rgba(12,18,32,0.85); backdrop-filter:blur(12px); z-index:600; display:none; align-items:center; justify-content:center; padding:20px; }
-    .pw-overlay.open { display:flex; }
-    .pw-box { background:white; border-radius:22px; padding:32px 28px; max-width:360px; width:100%; text-align:center; box-shadow:0 40px 100px rgba(8,145,178,0.2); animation:modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1); }
-    @keyframes modalIn { from{opacity:0;transform:scale(0.9)} to{opacity:1;transform:scale(1)} }
-    .pw-icon { font-size:2.8rem; margin-bottom:10px; }
-    .pw-box h3 { font-size:1.15rem; font-weight:800; color:var(--dark); margin-bottom:5px; }
-    .pw-box p { font-size:0.8rem; color:var(--gray3); margin-bottom:20px; }
-    .pw-input { width:100%; background:var(--gray-light); border:2px solid var(--gray); border-radius:12px; padding:12px 16px; color:var(--text); font-family:'Poppins',sans-serif; font-size:0.95rem; outline:none; transition:all 0.2s; text-align:center; letter-spacing:3px; margin-bottom:12px; }
-    .pw-input:focus { border-color:var(--teal); box-shadow:0 0 0 3px rgba(8,145,178,0.1); }
-    .pw-btn { width:100%; background:var(--teal); color:white; border:none; padding:12px; border-radius:12px; font-family:'Poppins',sans-serif; font-size:0.92rem; font-weight:700; cursor:pointer; transition:all 0.3s; box-shadow:0 8px 24px var(--teal-glow); }
-    .pw-btn:hover { background:var(--teal2); }
-    .pw-cancel { display:block; margin-top:10px; color:var(--gray2); font-size:0.78rem; cursor:pointer; }
-    .pw-cancel:hover { color:var(--teal); }
-    .pw-error { color:#ef4444; font-size:0.78rem; margin-top:6px; display:none; }
-
-    .add-section { padding:50px 16px; background:white; display:none; }
-    .add-section.visible { display:block; }
-    .admin-header-bar { background:linear-gradient(135deg,var(--teal),var(--teal2)); padding:14px 18px; display:flex; align-items:center; justify-content:space-between; border-radius:14px; margin-bottom:24px; color:white; flex-wrap:wrap; gap:10px; }
-    .admin-header-bar h3 { font-size:0.95rem; font-weight:700; }
-    .admin-header-bar p { font-size:0.72rem; opacity:0.85; }
-    .logout-btn { background:rgba(255,255,255,0.2); color:white; border:none; padding:7px 14px; border-radius:9px; cursor:pointer; font-family:'Poppins',sans-serif; font-size:0.75rem; font-weight:600; transition:all 0.2s; white-space:nowrap; }
-    .logout-btn:hover { background:rgba(255,255,255,0.3); }
-    .change-pw-btn { background:transparent; color:white; border:1.5px solid rgba(255,255,255,0.6); padding:7px 14px; border-radius:9px; cursor:pointer; font-family:'Poppins',sans-serif; font-size:0.75rem; font-weight:600; transition:all 0.2s; white-space:nowrap; }
-    .change-pw-btn:hover { background:rgba(255,255,255,0.2); }
-    .add-form { background:var(--gray-light); border:2px solid var(--gray); border-radius:18px; padding:24px; max-width:700px; margin:0 auto; }
-    .sheet-note { background:#f0fdff; border:1.5px solid var(--teal-light); border-radius:12px; padding:12px 14px; font-size:0.76rem; color:var(--teal); margin-bottom:18px; display:flex; align-items:flex-start; gap:8px; }
-    .form-submit { width:100%; background:linear-gradient(135deg,var(--teal),var(--teal2)); color:white; border:none; padding:14px; border-radius:12px; font-family:'Poppins',sans-serif; font-size:0.92rem; font-weight:800; cursor:pointer; transition:all 0.3s; margin-top:6px; box-shadow:0 8px 24px var(--teal-glow); text-decoration:none; display:block; text-align:center; }
-    .form-submit:hover { transform:translateY(-2px); }
-    .refresh-btn { background:transparent; border:2px solid var(--teal); color:var(--teal); padding:9px 22px; border-radius:10px; font-family:'Poppins',sans-serif; font-size:0.82rem; font-weight:600; cursor:pointer; margin-top:12px; transition:all 0.2s; }
-    .refresh-btn:hover { background:var(--teal); color:white; }
-
-    .modal-overlay { position:fixed; inset:0; background:rgba(12,18,32,0.8); backdrop-filter:blur(12px); z-index:500; display:none; align-items:center; justify-content:center; padding:14px; }
-    .modal-overlay.open { display:flex; }
-    .modal { background:white; border-radius:18px; max-width:760px; width:100%; max-height:90vh; overflow-y:auto; display:grid; grid-template-columns:1fr 1fr; animation:modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 40px 100px rgba(8,145,178,0.2); }
-    @media(max-width:560px){ .modal { grid-template-columns:1fr; } }
-    .modal-img { background:var(--gray-light); border-radius:18px 0 0 18px; min-height:280px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-    @media(max-width:560px){ .modal-img { border-radius:18px 18px 0 0; min-height:200px; } }
-    .modal-img img { width:100%; height:100%; object-fit:cover; }
-    .modal-img-placeholder { font-size:5rem; opacity:0.1; }
-    .modal-content { padding:24px 20px; display:flex; flex-direction:column; }
-    .modal-close { align-self:flex-end; background:var(--gray-light); border:none; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:0.95rem; margin-bottom:14px; transition:all 0.2s; }
-    .modal-close:hover { background:var(--gray); }
-    .modal-cat { font-size:0.62rem; color:var(--teal); text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:7px; }
-    .modal-title { font-size:1.05rem; font-weight:800; color:var(--dark); margin-bottom:9px; line-height:1.3; }
-    .modal-rating { display:flex; align-items:center; gap:7px; margin-bottom:10px; }
-    .modal-desc { font-size:0.8rem; color:var(--gray3); line-height:1.7; margin-bottom:16px; flex:1; }
-    .modal-price { font-size:1.5rem; font-weight:900; color:var(--dark); }
-    .modal-price-old { font-size:0.82rem; color:var(--gray2); text-decoration:line-through; margin-bottom:14px; }
-    .modal-buy-btn { display:block; background:var(--teal); color:white; padding:13px 22px; border-radius:12px; text-decoration:none; font-weight:700; font-size:0.88rem; text-align:center; box-shadow:0 8px 24px var(--teal-glow); transition:all 0.3s; }
-    .modal-buy-btn:hover { background:var(--teal2); transform:translateY(-2px); }
-
-    footer { background:var(--dark); color:white; padding:44px 16px 22px; }
-    .footer-inner { max-width:1100px; margin:0 auto; }
-    .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr; gap:32px; margin-bottom:32px; }
-    @media(max-width:560px){ .footer-top { grid-template-columns:1fr; gap:20px; } }
-    .footer-logo { font-size:1.3rem; font-weight:900; color:white; margin-bottom:10px; }
-    .footer-logo span { color:var(--teal3); }
-    .footer-brand p { font-size:0.78rem; color:var(--gray2); line-height:1.7; }
-    .footer-col h4 { font-size:0.82rem; font-weight:700; color:white; margin-bottom:12px; }
-    .footer-col a { display:block; color:var(--gray2); text-decoration:none; font-size:0.78rem; margin-bottom:7px; transition:color 0.2s; }
-    .footer-col a:hover { color:var(--teal3); }
-    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
-    .footer-copy { font-size:0.72rem; color:var(--gray2); }
-    .footer-tags { display:flex; gap:7px; flex-wrap:wrap; }
-    .footer-tag { background:rgba(255,255,255,0.07); color:var(--gray2); font-size:0.68rem; padding:4px 11px; border-radius:50px; }
-
-    .toast { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--dark); color:white; padding:11px 22px; border-radius:50px; font-size:0.82rem; font-weight:600; z-index:700; opacity:0; transition:all 0.3s; pointer-events:none; white-space:nowrap; }
-    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
-
-    .changepw-overlay { position:fixed; inset:0; background:rgba(12,18,32,0.85); backdrop-filter:blur(12px); z-index:700; display:none; align-items:center; justify-content:center; padding:20px; }
-    .changepw-overlay.open { display:flex; }
-    .changepw-box { background:white; border-radius:22px; padding:28px; max-width:340px; width:100%; text-align:center; box-shadow:0 40px 100px rgba(8,145,178,0.2); animation:modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1); }
-    .changepw-box h3 { font-size:1.05rem; font-weight:800; color:var(--dark); margin-bottom:5px; }
-    .changepw-box p { font-size:0.78rem; color:var(--gray3); margin-bottom:18px; }
-
-    @media(max-width:560px){
-      .nav-links { display:none; }
-      .search-bar { width:110px; }
-      .search-bar:focus { width:140px; }
-      .hero-inner { grid-template-columns:1fr; }
-      .hero-visual { display:none; }
-    }
+    :root{--teal:#0891b2;--teal2:#06b6d4;--teal3:#22d3ee;--teal-light:#cffafe;--teal-glow:rgba(8,145,178,0.3);--dark:#0c1220;--white:#ffffff;--gray-light:#f8fafc;--gray:#e2e8f0;--gray2:#94a3b8;--gray3:#64748b;--text:#1e293b;}
+    *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+    body{font-family:'Poppins',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:58px;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--gray);box-shadow:0 2px 20px rgba(0,0,0,0.06);}
+    .logo{font-size:1.4rem;font-weight:900;letter-spacing:-1px;color:var(--dark);}.logo span{color:var(--teal);}
+    .nav-right{display:flex;align-items:center;gap:8px;}
+    .search-wrap{position:relative;}.search-wrap::before{content:'🔍';position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:0.68rem;}
+    .search-bar{background:var(--gray-light);border:1.5px solid var(--gray);border-radius:50px;padding:7px 12px 7px 28px;color:var(--text);font-family:'Poppins',sans-serif;font-size:0.78rem;width:130px;outline:none;transition:all 0.3s;}
+    .search-bar:focus{border-color:var(--teal);width:170px;}
+    .admin-btn{background:var(--teal);color:white;border:none;padding:7px 14px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:600;cursor:pointer;box-shadow:0 4px 14px var(--teal-glow);}
+    .hero{min-height:100vh;display:flex;align-items:center;padding:75px 16px 50px;background:linear-gradient(135deg,#f0fdff 0%,#e0f7fa 40%,#ffffff 100%);}
+    .hero-content{animation:fadeUp 0.8s ease both;max-width:600px;margin:0 auto;text-align:center;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(8,145,178,0.1);color:var(--teal);padding:5px 14px;border-radius:50px;font-size:0.68rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;border:1px solid rgba(8,145,178,0.2);}
+    .dot{width:7px;height:7px;background:var(--teal2);border-radius:50%;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+    .hero h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:14px;letter-spacing:-1.5px;color:var(--dark);}
+    .hero h1 .teal{color:var(--teal);}
+    .hero p{font-size:0.9rem;color:var(--gray3);line-height:1.75;margin-bottom:26px;}
+    .hero-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+    .btn-hero{background:var(--teal);color:white;border:none;padding:12px 24px;border-radius:12px;font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;box-shadow:0 8px 24px var(--teal-glow);}
+    .btn-hero2{background:transparent;color:var(--teal);border:2px solid var(--teal);padding:12px 24px;border-radius:12px;font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;}
+    .stats-bar{background:var(--teal);padding:14px 16px;display:flex;justify-content:center;flex-wrap:wrap;}
+    .stat-item{flex:1;min-width:100px;max-width:200px;text-align:center;border-right:1px solid rgba(255,255,255,0.2);padding:6px 0;}
+    .stat-item:last-child{border-right:none;}
+    .stat-num{font-size:1.4rem;font-weight:900;color:white;}.stat-num span{color:var(--teal-light);}
+    .stat-label{font-size:0.6rem;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:1px;font-weight:500;}
+    .cat-section{padding:50px 16px;background:var(--white);}
+    .section-tag{font-size:0.65rem;color:var(--teal);text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:5px;}
+    .section-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:var(--dark);letter-spacing:-1px;}
+    .section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;}
+    .view-all{color:var(--teal);text-decoration:none;font-size:0.78rem;font-weight:600;}
+    .cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+    @media(min-width:640px){.cat-grid{grid-template-columns:repeat(4,1fr);}}
+    .cat-card{border-radius:14px;padding:18px 12px 16px;cursor:pointer;transition:all 0.3s;border:2px solid var(--gray);background:var(--gray-light);text-align:center;}
+    .cat-card:hover{border-color:var(--teal);background:white;transform:translateY(-3px);box-shadow:0 10px 25px rgba(8,145,178,0.12);}
+    .cat-icon{font-size:2rem;margin-bottom:8px;display:block;}.cat-name{font-size:0.88rem;font-weight:700;color:var(--dark);margin-bottom:3px;}.cat-sub{font-size:0.65rem;color:var(--gray2);}
+    .prod-section{padding:50px 16px;background:var(--gray-light);}
+    .filter-tabs{display:flex;gap:7px;margin-bottom:20px;flex-wrap:wrap;}
+    .filter-tab{padding:7px 16px;border-radius:50px;font-size:0.75rem;font-weight:600;cursor:pointer;border:2px solid var(--gray);background:white;color:var(--gray3);font-family:'Poppins',sans-serif;transition:all 0.2s;}
+    .filter-tab.active,.filter-tab:hover{background:var(--teal);color:white;border-color:var(--teal);}
+    .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+    @media(min-width:640px){.products-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(min-width:1024px){.products-grid{grid-template-columns:repeat(4,1fr);}}
+    .product-card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.05);transition:all 0.3s;cursor:pointer;border:2px solid transparent;}
+    .product-card:hover{transform:translateY(-5px);box-shadow:0 14px 35px rgba(8,145,178,0.14);border-color:var(--teal);}
+    .product-img-wrap{position:relative;background:var(--gray-light);height:170px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    @media(min-width:640px){.product-img-wrap{height:210px;}}
+    .product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+    .product-card:hover .product-img-wrap img{transform:scale(1.07);}
+    .product-img-placeholder{font-size:3.5rem;opacity:0.15;}
+    .product-badge{position:absolute;top:8px;left:8px;background:var(--teal);color:white;font-size:0.56rem;font-weight:700;padding:4px 9px;border-radius:50px;text-transform:uppercase;}
+    .wishlist-btn{position:absolute;top:8px;right:8px;width:30px;height:30px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.1);font-size:0.82rem;}
+    .product-info{padding:10px 12px 12px;}
+    .product-category{font-size:0.6rem;color:var(--teal);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:3px;}
+    .product-name{font-size:0.8rem;font-weight:700;color:var(--dark);margin-bottom:5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+    .product-rating{display:flex;align-items:center;gap:4px;margin-bottom:8px;}
+    .stars{color:#f59e0b;font-size:0.65rem;}.rating-count{font-size:0.65rem;color:var(--gray2);}
+    .product-price-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px;}
+    .price-group{display:flex;align-items:baseline;gap:4px;}
+    .price{font-size:0.95rem;font-weight:800;color:var(--dark);}
+    .price-old{font-size:0.72rem;color:var(--gray2);text-decoration:line-through;}
+    .buy-btn{background:var(--teal);color:white;border:none;padding:6px 12px;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.7rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;}
+    #emptyMsg{text-align:center;color:var(--gray2);padding:50px 0;display:none;font-size:0.88rem;}
+    .loading-wrap{text-align:center;padding:50px 20px;color:var(--gray2);}
+    .spinner{width:38px;height:38px;border:3px solid var(--gray);border-top-color:var(--teal);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 14px;}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .add-section{padding:50px 16px;background:white;display:none;}
+    .add-section.visible{display:block;}
+    .admin-header-bar{background:linear-gradient(135deg,var(--teal),var(--teal2));padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-radius:14px;margin-bottom:24px;color:white;flex-wrap:wrap;gap:10px;}
+    .admin-header-bar h3{font-size:0.95rem;font-weight:700;}.admin-header-bar p{font-size:0.72rem;opacity:0.85;}
+    .admin-btns{display:flex;gap:8px;flex-wrap:wrap;}
+    .logout-btn{background:rgba(255,255,255,0.2);color:white;border:none;padding:7px 14px;border-radius:9px;cursor:pointer;font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:600;}
+    .change-pw-btn{background:transparent;color:white;border:1.5px solid rgba(255,255,255,0.6);padding:7px 14px;border-radius:9px;cursor:pointer;font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:600;}
+    .add-form{background:var(--gray-light);border:2px solid var(--gray);border-radius:18px;padding:24px;max-width:700px;margin:0 auto;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+    @media(max-width:500px){.form-row{grid-template-columns:1fr;}}
+    .form-group{display:flex;flex-direction:column;gap:7px;}.form-group.full{grid-column:1/-1;}
+    .form-label{font-size:0.7rem;color:var(--gray3);text-transform:uppercase;letter-spacing:1px;font-weight:700;}
+    .form-input,.form-select,.form-textarea{background:white;border:2px solid var(--gray);border-radius:12px;padding:11px 14px;color:var(--text);font-family:'Poppins',sans-serif;font-size:0.85rem;outline:none;transition:all 0.2s;}
+    .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--teal);}
+    .form-select{appearance:none;cursor:pointer;}.form-textarea{resize:none;min-height:80px;}
+    .img-upload-area{border:2.5px dashed var(--teal);border-radius:14px;padding:24px;text-align:center;cursor:pointer;background:white;}
+    .upload-icon{font-size:2rem;margin-bottom:8px;}.upload-text{font-size:0.82rem;color:var(--gray3);line-height:1.6;}.upload-text span{color:var(--teal);font-weight:700;}
+    #uploadPreview{margin-top:12px;display:none;}
+    #previewImg{max-height:120px;border-radius:10px;object-fit:cover;border:3px solid var(--teal);}
+    .form-submit{width:100%;background:linear-gradient(135deg,var(--teal),var(--teal2));color:white;border:none;padding:14px;border-radius:12px;font-family:'Poppins',sans-serif;font-size:0.92rem;font-weight:800;cursor:pointer;margin-top:6px;box-shadow:0 8px 24px var(--teal-glow);}
+    .form-submit:disabled{opacity:0.6;cursor:not-allowed;}
+    .admin-products-list{max-width:700px;margin:24px auto 0;}
+    .admin-product-item{background:var(--gray-light);border:1.5px solid var(--gray);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+    .admin-product-img{width:50px;height:50px;border-radius:8px;object-fit:cover;background:var(--gray);flex-shrink:0;}
+    .admin-product-info{flex:1;}.admin-product-name{font-size:0.82rem;font-weight:700;color:var(--dark);}.admin-product-price{font-size:0.75rem;color:var(--teal);font-weight:600;}
+    .delete-btn{background:#fee2e2;color:#ef4444;border:none;padding:7px 12px;border-radius:8px;font-family:'Poppins',sans-serif;font-size:0.72rem;font-weight:700;cursor:pointer;flex-shrink:0;}
+    .pw-overlay{position:fixed;inset:0;background:rgba(12,18,32,0.85);backdrop-filter:blur(12px);z-index:600;display:none;align-items:center;justify-content:center;padding:20px;}
+    .pw-overlay.open{display:flex;}
+    .pw-box{background:white;border-radius:22px;padding:32px 28px;max-width:360px;width:100%;text-align:center;box-shadow:0 40px 100px rgba(8,145,178,0.2);animation:modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1);}
+    @keyframes modalIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+    .pw-icon{font-size:2.8rem;margin-bottom:10px;}.pw-box h3{font-size:1.15rem;font-weight:800;color:var(--dark);margin-bottom:5px;}.pw-box p{font-size:0.8rem;color:var(--gray3);margin-bottom:20px;}
+    .pw-input{width:100%;background:var(--gray-light);border:2px solid var(--gray);border-radius:12px;padding:12px 16px;color:var(--text);font-family:'Poppins',sans-serif;font-size:0.95rem;outline:none;text-align:center;letter-spacing:3px;margin-bottom:12px;}
+    .pw-input:focus{border-color:var(--teal);}
+    .pw-btn{width:100%;background:var(--teal);color:white;border:none;padding:12px;border-radius:12px;font-family:'Poppins',sans-serif;font-size:0.92rem;font-weight:700;cursor:pointer;}
+    .pw-cancel{display:block;margin-top:10px;color:var(--gray2);font-size:0.78rem;cursor:pointer;}
+    .pw-error{color:#ef4444;font-size:0.78rem;margin-top:6px;display:none;}
+    .modal-overlay{position:fixed;inset:0;background:rgba(12,18,32,0.8);backdrop-filter:blur(12px);z-index:500;display:none;align-items:center;justify-content:center;padding:14px;}
+    .modal-overlay.open{display:flex;}
+    .modal{background:white;border-radius:18px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;animation:modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 40px 100px rgba(8,145,178,0.2);}
+    @media(max-width:560px){.modal{grid-template-columns:1fr;}}
+    .modal-img{background:var(--gray-light);border-radius:18px 0 0 18px;min-height:280px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    @media(max-width:560px){.modal-img{border-radius:18px 18px 0 0;min-height:200px;}}
+    .modal-img img{width:100%;height:100%;object-fit:cover;}
+    .modal-img-placeholder{font-size:5rem;opacity:0.1;}
+    .modal-content{padding:24px 20px;display:flex;flex-direction:column;}
+    .modal-close{align-self:flex-end;background:var(--gray-light);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:0.95rem;margin-bottom:14px;}
+    .modal-cat{font-size:0.62rem;color:var(--teal);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:7px;}
+    .modal-title{font-size:1.05rem;font-weight:800;color:var(--dark);margin-bottom:9px;line-height:1.3;}
+    .modal-rating{display:flex;align-items:center;gap:7px;margin-bottom:10px;}
+    .modal-desc{font-size:0.8rem;color:var(--gray3);line-height:1.7;margin-bottom:16px;flex:1;}
+    .modal-price{font-size:1.5rem;font-weight:900;color:var(--dark);}
+    .modal-price-old{font-size:0.82rem;color:var(--gray2);text-decoration:line-through;margin-bottom:14px;}
+    .modal-buy-btn{display:block;background:var(--teal);color:white;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.88rem;text-align:center;box-shadow:0 8px 24px var(--teal-glow);}
+    footer{background:var(--dark);color:white;padding:44px 16px 22px;}
+    .footer-inner{max-width:1100px;margin:0 auto;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+    @media(max-width:560px){.footer-top{grid-template-columns:1fr;gap:20px;}}
+    .footer-logo{font-size:1.3rem;font-weight:900;color:white;margin-bottom:10px;}.footer-logo span{color:var(--teal3);}
+    .footer-brand p{font-size:0.78rem;color:var(--gray2);line-height:1.7;}
+    .footer-col h4{font-size:0.82rem;font-weight:700;color:white;margin-bottom:12px;}
+    .footer-col a{display:block;color:var(--gray2);text-decoration:none;font-size:0.78rem;margin-bottom:7px;}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+    .footer-copy{font-size:0.72rem;color:var(--gray2);}
+    .footer-tags{display:flex;gap:7px;flex-wrap:wrap;}
+    .footer-tag{background:rgba(255,255,255,0.07);color:var(--gray2);font-size:0.68rem;padding:4px 11px;border-radius:50px;}
+    .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:white;padding:11px 22px;border-radius:50px;font-size:0.82rem;font-weight:600;z-index:700;opacity:0;transition:all 0.3s;pointer-events:none;white-space:nowrap;}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+    .changepw-overlay{position:fixed;inset:0;background:rgba(12,18,32,0.85);backdrop-filter:blur(12px);z-index:700;display:none;align-items:center;justify-content:center;padding:20px;}
+    .changepw-overlay.open{display:flex;}
+    .changepw-box{background:white;border-radius:22px;padding:28px;max-width:340px;width:100%;text-align:center;animation:modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1);}
+    .changepw-box h3{font-size:1.05rem;font-weight:800;color:var(--dark);margin-bottom:5px;}.changepw-box p{font-size:0.78rem;color:var(--gray3);margin-bottom:18px;}
+    .size-warning{background:#fff7ed;border:1.5px solid #fed7aa;border-radius:10px;padding:10px 14px;font-size:0.75rem;color:#c2410c;margin-top:10px;display:none;}
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="logo">X<span>-Zon</span></div>
-    <ul class="nav-links">
-      <li><a href="#products">Shop</a></li>
-      <li><a href="#categories">Categories</a></li>
-    </ul>
-    <div class="nav-right">
-      <div class="search-wrap">
-        <input class="search-bar" type="text" id="searchInput" placeholder="Search..." oninput="filterProducts()" />
-      </div>
-      <button class="admin-login-btn" onclick="openAdminLogin()">🔐 Admin</button>
+<nav>
+  <div class="logo">X<span>-Zon</span></div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <input class="search-bar" type="text" id="searchInput" placeholder="Search..." oninput="filterProducts()" />
     </div>
-  </nav>
-
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-tag"><div class="dot"></div> New Collection 2025</div>
-        <h1>Fashion <span class="teal">Redefined</span> for Every Woman</h1>
-        <p>Handpicked premium women's fashion — Kurtis, Sarees, Western & more. Direct from Amazon at the best prices.</p>
-        <div class="hero-btns">
-          <a href="#products" class="btn-hero">🛍 Shop Now</a>
-          <a href="#categories" class="btn-hero2">Categories</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-card-main">
-          <div class="hero-card-top">
-            <div class="hero-card-avatar">👑</div>
-            <div class="hero-card-info"><h4>X-Zon Store</h4><p>Women's Fashion</p></div>
-          </div>
-          <div class="hero-products-preview">
-            <div class="preview-item"><div class="pi">👘</div><div class="pn">Kurtis</div><div class="pp">From ₹299</div></div>
-            <div class="preview-item"><div class="pi">🥻</div><div class="pn">Sarees</div><div class="pp">From ₹499</div></div>
-            <div class="preview-item"><div class="pi">👗</div><div class="pn">Western</div><div class="pp">From ₹399</div></div>
-            <div class="preview-item"><div class="pi">💍</div><div class="pn">Accessories</div><div class="pp">From ₹199</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="stats-bar">
-    <div class="stat-item"><div class="stat-num" id="statProducts">0<span>+</span></div><div class="stat-label">Products Listed</div></div>
-    <div class="stat-item"><div class="stat-num">100<span>%</span></div><div class="stat-label">Amazon Verified</div></div>
-    <div class="stat-item"><div class="stat-num">Pan<span>India</span></div><div class="stat-label">Delivery Available</div></div>
-    <div class="stat-item"><div class="stat-num">Fast<span>→</span></div><div class="stat-label">Fast Redirect</div></div>
+    <button class="admin-btn" onclick="openAdminLogin()">🔐 Admin</button>
   </div>
+</nav>
 
-  <section class="cat-section" id="categories">
-    <div class="section-header">
-      <div><div class="section-tag">Browse By</div><h2 class="section-title">Shop by Category</h2></div>
-      <a href="#products" class="view-all">View All →</a>
-    </div>
-    <div class="cat-grid">
-      <div class="cat-card" onclick="filterByCategory('Kurti')"><span class="cat-icon">👘</span><div class="cat-name">Kurtis</div><div class="cat-sub">Ethnic & Fusion Wear</div></div>
-      <div class="cat-card" onclick="filterByCategory('Saree')"><span class="cat-icon">🥻</span><div class="cat-name">Sarees</div><div class="cat-sub">Traditional & Designer</div></div>
-      <div class="cat-card" onclick="filterByCategory('Western')"><span class="cat-icon">👗</span><div class="cat-name">Western</div><div class="cat-sub">Tops, Dresses & More</div></div>
-      <div class="cat-card" onclick="filterByCategory('Accessories')"><span class="cat-icon">💍</span><div class="cat-name">Accessories</div><div class="cat-sub">Jewellery & Handbags</div></div>
-    </div>
-  </section>
-
-  <section class="prod-section" id="products">
-    <div class="section-header">
-      <div><div class="section-tag">Shop Now</div><h2 class="section-title">Our Collection</h2></div>
-    </div>
-    <div class="filter-tabs">
-      <button class="filter-tab active" onclick="setFilter('All',this)">All Products</button>
-      <button class="filter-tab" onclick="setFilter('Kurti',this)">Kurtis</button>
-      <button class="filter-tab" onclick="setFilter('Saree',this)">Sarees</button>
-      <button class="filter-tab" onclick="setFilter('Western',this)">Western</button>
-      <button class="filter-tab" onclick="setFilter('Accessories',this)">Accessories</button>
-    </div>
-    <div id="loadingWrap" class="loading-wrap"><div class="spinner"></div><p>Products load ho rahe hain...</p></div>
-    <div class="products-grid" id="productsGrid" style="display:none"></div>
-    <p id="emptyMsg">Koi product nahi mila.</p>
-  </section>
-
-  <section class="add-section" id="adminPanel">
-    <div class="admin-header-bar">
-      <div><h3>🛠 Admin Panel</h3><p>Sirf aap yahan product manage kar sakte ho</p></div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="change-pw-btn" onclick="openChangePw()">🔑 Password Change</button>
-        <button class="logout-btn" onclick="logoutAdmin()">Logout</button>
-      </div>
-    </div>
-    <div class="add-form">
-      <div class="sheet-note">📋 <span><strong>Google Sheet mein product add karo</strong> → Website pe automatically dikh jayega sabko!</span></div>
-      <div style="font-size:0.82rem;color:var(--gray3);line-height:2;background:var(--gray-light);border-radius:12px;padding:16px;margin-bottom:18px">
-        <strong style="color:var(--dark);display:block;margin-bottom:8px">Sheet mein ye columns fill karo (Row 1 se seedha data daalo, koi header mat likho):</strong>
-        <b style="color:var(--dark)">A:</b> Product Name &nbsp;|&nbsp;
-        <b style="color:var(--dark)">B:</b> Category (Kurti/Saree/Western/Accessories) &nbsp;|&nbsp;
-        <b style="color:var(--dark)">C:</b> Price<br>
-        <b style="color:var(--dark)">D:</b> Old Price (optional) &nbsp;|&nbsp;
-        <b style="color:var(--dark)">E:</b> Rating (e.g. 4.5) &nbsp;|&nbsp;
-        <b style="color:var(--dark)">F:</b> Reviews count<br>
-        <b style="color:var(--dark)">G:</b> Amazon/Flipkart Link &nbsp;|&nbsp;
-        <b style="color:var(--dark)">H:</b> Image URL (optional) &nbsp;|&nbsp;
-        <b style="color:var(--dark)">I:</b> Description (optional)
-      </div>
-      <a href="https://docs.google.com/spreadsheets/d/1Z7P9gLgXkR0pIwYM9BLERzM3WnwypD2yLd5bufP1dJM/edit" target="_blank" class="form-submit">📊 Google Sheet Kholo → Product Add Karo</a>
-      <div style="text-align:center;margin-top:12px">
-        <button class="refresh-btn" onclick="loadProducts()">🔄 Website Refresh Karo</button>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="footer-logo">X<span>-Zon</span></div>
-          <p>India's growing women's fashion affiliate store. Handpicked products from Amazon, curated with love.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Shop</h4>
-          <a href="#products">All Products</a>
-          <a href="#categories">Kurtis</a>
-          <a href="#categories">Sarees</a>
-          <a href="#categories">Western</a>
-        </div>
-        <div class="footer-col">
-          <h4>Info</h4>
-          <a href="#categories">Categories</a>
-          <a href="#">About X-Zon</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="footer-copy">© 2025 X-Zon · Amazon Affiliate Store · All purchases redirect to Amazon.in</div>
-        <div class="footer-tags">
-          <span class="footer-tag">Amazon Affiliate</span>
-          <span class="footer-tag">100% Free</span>
-          <span class="footer-tag">Women's Fashion</span>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-    <div class="modal">
-      <div class="modal-img" id="modalImg"><div class="modal-img-placeholder">👘</div></div>
-      <div class="modal-content">
-        <button class="modal-close" onclick="closeModalDirect()">✕</button>
-        <div class="modal-cat" id="modalCat"></div>
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <div class="modal-rating"><span class="stars" id="modalStars"></span><span class="rating-count" id="modalReviews"></span></div>
-        <p class="modal-desc" id="modalDesc"></p>
-        <div class="modal-price" id="modalPrice"></div>
-        <div class="modal-price-old" id="modalOldPrice"></div>
-        <a href="#" class="modal-buy-btn" id="modalBuyBtn" target="_blank" rel="noopener noreferrer">🛒 Buy Now on Amazon →</a>
-      </div>
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag"><div class="dot"></div> New Collection 2025</div>
+    <h1>Fashion <span class="teal">Redefined</span> for Every Woman</h1>
+    <p>Handpicked premium women's fashion — Kurtis, Sarees, Western & more. Direct from Amazon at the best prices.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-hero">🛍 Shop Now</a>
+      <a href="#categories" class="btn-hero2">Categories</a>
     </div>
   </div>
+</section>
 
-  <div class="pw-overlay" id="pwOverlay">
-    <div class="pw-box">
-      <div class="pw-icon">🔐</div>
-      <h3>Admin Login</h3>
-      <p>Sirf admin ka password yahan kaam karega</p>
-      <input type="password" class="pw-input" id="pwInput" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPassword()" />
-      <div class="pw-error" id="pwError">❌ Galat password! Dobara try karo.</div>
-      <button class="pw-btn" onclick="checkPassword()">Login</button>
-      <span class="pw-cancel" onclick="closePwModal()">Cancel</span>
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num" id="statProducts">0<span>+</span></div><div class="stat-label">Products Listed</div></div>
+  <div class="stat-item"><div class="stat-num">100<span>%</span></div><div class="stat-label">Amazon Verified</div></div>
+  <div class="stat-item"><div class="stat-num">Pan<span>India</span></div><div class="stat-label">Delivery Available</div></div>
+  <div class="stat-item"><div class="stat-num">Fast<span>→</span></div><div class="stat-label">Fast Redirect</div></div>
+</div>
+
+<section class="cat-section" id="categories">
+  <div class="section-header">
+    <div><div class="section-tag">Browse By</div><h2 class="section-title">Shop by Category</h2></div>
+    <a href="#products" class="view-all">View All →</a>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card" onclick="filterByCategory('Kurti')"><span class="cat-icon">👘</span><div class="cat-name">Kurtis</div><div class="cat-sub">Ethnic & Fusion Wear</div></div>
+    <div class="cat-card" onclick="filterByCategory('Saree')"><span class="cat-icon">🥻</span><div class="cat-name">Sarees</div><div class="cat-sub">Traditional & Designer</div></div>
+    <div class="cat-card" onclick="filterByCategory('Western')"><span class="cat-icon">👗</span><div class="cat-name">Western</div><div class="cat-sub">Tops, Dresses & More</div></div>
+    <div class="cat-card" onclick="filterByCategory('Accessories')"><span class="cat-icon">💍</span><div class="cat-name">Accessories</div><div class="cat-sub">Jewellery & Handbags</div></div>
+  </div>
+</section>
+
+<section class="prod-section" id="products">
+  <div class="section-header">
+    <div><div class="section-tag">Shop Now</div><h2 class="section-title">Our Collection</h2></div>
+  </div>
+  <div class="filter-tabs">
+    <button class="filter-tab active" onclick="setFilter('All',this)">All Products</button>
+    <button class="filter-tab" onclick="setFilter('Kurti',this)">Kurtis</button>
+    <button class="filter-tab" onclick="setFilter('Saree',this)">Sarees</button>
+    <button class="filter-tab" onclick="setFilter('Western',this)">Western</button>
+    <button class="filter-tab" onclick="setFilter('Accessories',this)">Accessories</button>
+  </div>
+  <div id="loadingWrap" class="loading-wrap"><div class="spinner"></div><p>Products load ho rahe hain...</p></div>
+  <div class="products-grid" id="productsGrid" style="display:none"></div>
+  <p id="emptyMsg">Koi product nahi mila.</p>
+</section>
+
+<section class="add-section" id="adminPanel">
+  <div class="admin-header-bar">
+    <div><h3>🛠 Admin Panel</h3><p>Sirf aap product manage kar sakte ho</p></div>
+    <div class="admin-btns">
+      <button class="change-pw-btn" onclick="openChangePw()">🔑 Password</button>
+      <button class="logout-btn" onclick="logoutAdmin()">Logout</button>
     </div>
   </div>
+  <div class="add-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Product Name *</label>
+        <input type="text" class="form-input" id="pName" placeholder="e.g. Floral Kurti" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Category *</label>
+        <select class="form-select form-input" id="pCategory">
+          <option value="Kurti">Kurti</option>
+          <option value="Saree">Saree</option>
+          <option value="Western">Western</option>
+          <option value="Accessories">Accessories</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Selling Price (₹) *</label>
+        <input type="number" class="form-input" id="pPrice" placeholder="e.g. 599" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Original MRP (₹)</label>
+        <input type="number" class="form-input" id="pOldPrice" placeholder="e.g. 999" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Rating (1–5)</label>
+        <input type="number" class="form-input" id="pRating" placeholder="e.g. 4.5" min="1" max="5" step="0.1" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Total Reviews</label>
+        <input type="number" class="form-input" id="pReviews" placeholder="e.g. 1234" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group full">
+        <label class="form-label">Amazon / Flipkart Link *</label>
+        <input type="url" class="form-input" id="pLink" placeholder="https://amzn.to/xxxxx" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group full">
+        <label class="form-label">Product Image 📸 (Gallery se select karo)</label>
+        <div class="img-upload-area" onclick="document.getElementById('pImageFile').click()">
+          <div class="upload-icon">📷</div>
+          <div class="upload-text"><strong>Tap karo — gallery se photo select karo</strong><br><span>JPG, PNG • Auto compress hogi</span></div>
+          <div id="uploadPreview"><img id="previewImg" src="" /><div id="uploadFileName" style="font-size:0.72rem;color:var(--teal);margin-top:5px;font-weight:600"></div></div>
+        </div>
+        <input type="file" id="pImageFile" accept="image/*" style="display:none" onchange="handleImageUpload(this)" />
+        <div class="size-warning" id="sizeWarning">⚠️ Image compress ho rahi hai — thoda wait karo</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group full">
+        <label class="form-label">Description</label>
+        <textarea class="form-textarea" id="pDesc" placeholder="Product ke baare mein kuch likho..."></textarea>
+      </div>
+    </div>
+    <button class="form-submit" id="submitBtn" onclick="addProduct()">✓ Add Product to X-Zon</button>
+  </div>
+  <div class="admin-products-list" id="adminProductsList"></div>
+</section>
 
-  <div class="changepw-overlay" id="changePwOverlay">
-    <div class="changepw-box">
-      <div style="font-size:2.2rem;margin-bottom:8px">🔑</div>
-      <h3>Password Change Karo</h3>
-      <p>Naya password set karo — yaad rakhna!</p>
-      <input type="password" class="pw-input" id="oldPwInput" placeholder="Purana Password" style="margin-bottom:8px" />
-      <input type="password" class="pw-input" id="newPwInput" placeholder="Naya Password" style="margin-bottom:8px" />
-      <input type="password" class="pw-input" id="confirmPwInput" placeholder="Naya Password Confirm" />
-      <div class="pw-error" id="changePwError" style="margin-bottom:8px"></div>
-      <button class="pw-btn" onclick="changePassword()" style="margin-top:8px">Password Change Karo</button>
-      <span class="pw-cancel" onclick="closeChangePw()">Cancel</span>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="footer-logo">X<span>-Zon</span></div><p>India's growing women's fashion affiliate store. Handpicked products from Amazon.</p></div>
+      <div class="footer-col"><h4>Shop</h4><a href="#products">All Products</a><a href="#categories">Kurtis</a><a href="#categories">Sarees</a><a href="#categories">Western</a></div>
+      <div class="footer-col"><h4>Info</h4><a href="#categories">Categories</a><a href="#">About X-Zon</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 X-Zon · Amazon Affiliate Store</div>
+      <div class="footer-tags"><span class="footer-tag">Amazon Affiliate</span><span class="footer-tag">100% Free</span><span class="footer-tag">Women's Fashion</span></div>
     </div>
   </div>
+</footer>
 
-  <div class="toast" id="toast"></div>
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-img" id="modalImg"><div class="modal-img-placeholder">👘</div></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+      <div class="modal-cat" id="modalCat"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-rating"><span class="stars" id="modalStars"></span><span class="rating-count" id="modalReviews"></span></div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="modal-price-old" id="modalOldPrice"></div>
+      <a href="#" class="modal-buy-btn" id="modalBuyBtn" target="_blank" rel="noopener noreferrer">🛒 Buy Now on Amazon →</a>
+    </div>
+  </div>
+</div>
 
-  <script>
-    const SHEET_ID = '1Z7P9gLgXkR0pIwYM9BLERzM3WnwypD2yLd5bufP1dJM';
-    const DEFAULT_PASSWORD = 'xzon@2024';
+<div class="pw-overlay" id="pwOverlay">
+  <div class="pw-box">
+    <div class="pw-icon">🔐</div>
+    <h3>Admin Login</h3>
+    <p>Sirf admin ka password kaam karega</p>
+    <input type="password" class="pw-input" id="pwInput" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPassword()" />
+    <div class="pw-error" id="pwError">❌ Galat password!</div>
+    <button class="pw-btn" onclick="checkPassword()">Login</button>
+    <span class="pw-cancel" onclick="closePwModal()">Cancel</span>
+  </div>
+</div>
 
-    let products = [];
-    let currentFilter = 'All';
-    let isAdmin = false;
+<div class="changepw-overlay" id="changePwOverlay">
+  <div class="changepw-box">
+    <div style="font-size:2.2rem;margin-bottom:8px">🔑</div>
+    <h3>Password Change Karo</h3>
+    <p>Naya password set karo</p>
+    <input type="password" class="pw-input" id="oldPwInput" placeholder="Purana Password" style="margin-bottom:8px" />
+    <input type="password" class="pw-input" id="newPwInput" placeholder="Naya Password" style="margin-bottom:8px" />
+    <input type="password" class="pw-input" id="confirmPwInput" placeholder="Naya Password Confirm" />
+    <div class="pw-error" id="changePwError" style="margin-bottom:8px"></div>
+    <button class="pw-btn" onclick="changePassword()" style="margin-top:8px">Change Karo</button>
+    <span class="pw-cancel" onclick="closeChangePw()">Cancel</span>
+  </div>
+</div>
 
-    function getPassword() { return localStorage.getItem('xzon_pw') || DEFAULT_PASSWORD; }
+<div class="toast" id="toast"></div>
 
-    function openAdminLogin() {
-      if(isAdmin) { document.getElementById('adminPanel').scrollIntoView({behavior:'smooth'}); return; }
-      document.getElementById('pwOverlay').classList.add('open');
-      document.getElementById('pwInput').value = '';
-      document.getElementById('pwError').style.display = 'none';
-      setTimeout(() => document.getElementById('pwInput').focus(), 300);
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDGl3TmELWrxNOovnVYQPMjya2LjYNj5uw",
+    authDomain: "x-zon-product.firebaseapp.com",
+    projectId: "x-zon-product",
+    storageBucket: "x-zon-product.firebasestorage.app",
+    messagingSenderId: "13696881477",
+    appId: "1:13696881477:web:b3eb8c4c2be8ab9dfea42c"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const DEFAULT_PASSWORD = 'xzon@2024';
+  let products = [];
+  let currentFilter = 'All';
+  let isAdmin = false;
+  let selectedImageBase64 = '';
+
+  function getPassword() { return localStorage.getItem('xzon_pw') || DEFAULT_PASSWORD; }
+
+  // Compress image to base64
+  function compressImage(file, maxWidth=600, quality=0.7) {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          let w = img.width, h = img.height;
+          if(w > maxWidth) { h = Math.round(h * maxWidth / w); w = maxWidth; }
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL('image/jpeg', quality));
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  window.handleImageUpload = async function(input) {
+    if(input.files && input.files[0]) {
+      document.getElementById('sizeWarning').style.display = 'block';
+      const base64 = await compressImage(input.files[0]);
+      selectedImageBase64 = base64;
+      document.getElementById('previewImg').src = base64;
+      document.getElementById('uploadFileName').textContent = '✅ Image ready!';
+      document.getElementById('uploadPreview').style.display = 'block';
+      document.getElementById('sizeWarning').style.display = 'none';
     }
-    function closePwModal() { document.getElementById('pwOverlay').classList.remove('open'); }
-    function checkPassword() {
-      const pw = document.getElementById('pwInput').value;
-      if(pw === getPassword()) {
-        isAdmin = true; closePwModal();
-        document.getElementById('adminPanel').classList.add('visible');
-        document.getElementById('adminPanel').scrollIntoView({behavior:'smooth'});
-        showToast('✅ Admin login successful!');
-      } else {
-        document.getElementById('pwError').style.display = 'block';
-        document.getElementById('pwInput').value = '';
-        document.getElementById('pwInput').focus();
-      }
-    }
-    function logoutAdmin() {
-      isAdmin = false;
-      document.getElementById('adminPanel').classList.remove('visible');
-      showToast('👋 Logout ho gaye');
-    }
-    function openChangePw() {
-      document.getElementById('changePwOverlay').classList.add('open');
-      ['oldPwInput','newPwInput','confirmPwInput'].forEach(id => document.getElementById(id).value = '');
-      document.getElementById('changePwError').style.display = 'none';
-    }
-    function closeChangePw() { document.getElementById('changePwOverlay').classList.remove('open'); }
-    function changePassword() {
-      const old = document.getElementById('oldPwInput').value;
-      const nw = document.getElementById('newPwInput').value;
-      const confirm = document.getElementById('confirmPwInput').value;
-      const errEl = document.getElementById('changePwError');
-      errEl.style.display = 'none';
-      if(old !== getPassword()) { errEl.textContent = '❌ Purana password galat hai!'; errEl.style.display = 'block'; return; }
-      if(nw.length < 6) { errEl.textContent = '❌ Password 6+ characters ka hona chahiye!'; errEl.style.display = 'block'; return; }
-      if(nw !== confirm) { errEl.textContent = '❌ Naya password match nahi kar raha!'; errEl.style.display = 'block'; return; }
-      localStorage.setItem('xzon_pw', nw);
-      closeChangePw();
-      showToast('✅ Password change ho gaya!');
-    }
+  }
 
-    async function loadProducts() {
-      document.getElementById('loadingWrap').style.display = 'block';
-      document.getElementById('productsGrid').style.display = 'none';
-      document.getElementById('emptyMsg').style.display = 'none';
-      try {
-        const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Sheet1`;
-        const res = await fetch(url);
-        const text = await res.text();
-        const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
-        const rows = json.table.rows;
-        products = [];
-        rows.forEach((row, i) => {
-          const c = row.c;
-          if(!c || !c[0] || !c[0].v) return;
-          const name = String(c[0]?.v || '').trim();
-          const category = String(c[1]?.v || 'Accessories').trim();
-          const price = c[2]?.v || 0;
-          const oldPrice = c[3]?.v || null;
-          const rating = c[4]?.v || null;
-          const reviews = c[5]?.v || null;
-          const link = String(c[6]?.v || '#').trim();
-          const image = c[7]?.v ? String(c[7].v).trim() : null;
-          const desc = c[8]?.v ? String(c[8].v).trim() : 'Premium quality product.';
-          if(name && price) products.push({ id:i, name, category, price, oldPrice, rating, reviews, link, image, desc });
-        });
-        document.getElementById('loadingWrap').style.display = 'none';
-        document.getElementById('productsGrid').style.display = 'grid';
-        document.getElementById('statProducts').innerHTML = products.length + '<span>+</span>';
-        refresh();
-      } catch(e) {
-        document.getElementById('loadingWrap').innerHTML = '<p style="color:#ef4444;font-size:0.85rem">⚠️ Products load nahi hue.<br>Google Sheet "Anyone with link" pe share ki hai?<br><button onclick="loadProducts()" style="margin-top:10px;background:var(--teal);color:white;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;font-family:Poppins,sans-serif">🔄 Retry</button></p>';
-      }
+  async function loadProducts() {
+    document.getElementById('loadingWrap').style.display = 'block';
+    document.getElementById('productsGrid').style.display = 'none';
+    document.getElementById('emptyMsg').style.display = 'none';
+    try {
+      const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+      products = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      document.getElementById('loadingWrap').style.display = 'none';
+      document.getElementById('productsGrid').style.display = 'grid';
+      document.getElementById('statProducts').innerHTML = products.length + '<span>+</span>';
+      refresh();
+      if(isAdmin) renderAdminList();
+    } catch(e) {
+      document.getElementById('loadingWrap').innerHTML = '<p style="color:#ef4444;font-size:0.85rem">⚠️ Load nahi hua. Internet check karo.<br><button onclick="location.reload()" style="margin-top:10px;background:var(--teal);color:white;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;font-family:Poppins,sans-serif">🔄 Retry</button></p>';
     }
+  }
 
-    function getStars(r) {
-      const f = Math.floor(r), h = r % 1 >= 0.5 ? 1 : 0;
-      return '★'.repeat(f) + (h ? '½' : '') + '☆'.repeat(5 - f - h);
+  window.addProduct = async function() {
+    const name = document.getElementById('pName').value.trim();
+    const category = document.getElementById('pCategory').value;
+    const price = document.getElementById('pPrice').value;
+    const oldPrice = document.getElementById('pOldPrice').value;
+    const rating = document.getElementById('pRating').value;
+    const reviews = document.getElementById('pReviews').value;
+    const link = document.getElementById('pLink').value.trim();
+    const desc = document.getElementById('pDesc').value.trim();
+    if(!name||!price||!link){showToast('❌ Name, Price aur Link zaroori hai!');return;}
+    const btn = document.getElementById('submitBtn');
+    btn.disabled=true; btn.textContent='Adding...';
+    try {
+      await addDoc(collection(db,'products'),{
+        name,category,price:Number(price),
+        oldPrice:oldPrice?Number(oldPrice):null,
+        rating:rating?Number(rating):null,
+        reviews:reviews?Number(reviews):null,
+        link,imageUrl:selectedImageBase64,desc,
+        createdAt:Date.now()
+      });
+      showToast('✅ Product add ho gaya!');
+      ['pName','pPrice','pOldPrice','pRating','pReviews','pLink','pDesc'].forEach(id=>document.getElementById(id).value='');
+      document.getElementById('uploadPreview').style.display='none';
+      selectedImageBase64='';
+      btn.disabled=false; btn.textContent='✓ Add Product to X-Zon';
+      loadProducts();
+    } catch(e) {
+      showToast('❌ Error: '+e.message);
+      btn.disabled=false; btn.textContent='✓ Add Product to X-Zon';
     }
+  }
 
-    function renderProducts(list) {
-      const grid = document.getElementById('productsGrid');
-      const empty = document.getElementById('emptyMsg');
-      if(!list.length) { grid.innerHTML = ''; empty.style.display = 'block'; return; }
-      empty.style.display = 'none';
-      grid.innerHTML = list.map(p => `
-        <div class="product-card" onclick="openModal(${p.id})">
-          <div class="product-img-wrap">
-            ${p.image
-              ? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="product-img-placeholder" style="display:none">👘</div>`
-              : `<div class="product-img-placeholder">👘</div>`}
-            ${p.oldPrice ? `<div class="product-badge">SALE</div>` : ''}
-            <button class="wishlist-btn" onclick="toggleWish(event,${p.id})" id="wish_${p.id}">🤍</button>
-          </div>
-          <div class="product-info">
-            <div class="product-category">${p.category}</div>
-            <div class="product-name">${p.name}</div>
-            ${p.rating ? `<div class="product-rating"><span class="stars">${getStars(p.rating)}</span><span class="rating-count">(${p.reviews||0})</span></div>` : ''}
-            <div class="product-price-row">
-              <div class="price-group">
-                <span class="price">₹${p.price}</span>
-                ${p.oldPrice ? `<span class="price-old">₹${p.oldPrice}</span>` : ''}
-              </div>
-              <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="buy-btn" onclick="event.stopPropagation()">Buy Now</a>
-            </div>
+  window.deleteProduct = async function(id) {
+    if(!confirm('Delete karna chahte ho?')) return;
+    try { await deleteDoc(doc(db,'products',id)); showToast('🗑 Deleted!'); loadProducts(); }
+    catch(e) { showToast('❌ Delete nahi hua!'); }
+  }
+
+  function renderAdminList() {
+    const list = document.getElementById('adminProductsList');
+    if(!products.length){list.innerHTML='<p style="text-align:center;color:var(--gray2);font-size:0.85rem;margin-top:16px">Koi product nahi hai abhi.</p>';return;}
+    list.innerHTML='<h3 style="font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:14px">Added Products ('+products.length+')</h3>'+
+      products.map(p=>`
+        <div class="admin-product-item">
+          ${p.imageUrl?`<img class="admin-product-img" src="${p.imageUrl}" />`:`<div class="admin-product-img" style="display:flex;align-items:center;justify-content:center;font-size:1.5rem">👘</div>`}
+          <div class="admin-product-info"><div class="admin-product-name">${p.name}</div><div class="admin-product-price">₹${p.price} • ${p.category}</div></div>
+          <button class="delete-btn" onclick="deleteProduct('${p.id}')">🗑 Delete</button>
+        </div>`).join('');
+  }
+
+  function getStars(r){const f=Math.floor(r),h=r%1>=0.5?1:0;return '★'.repeat(f)+(h?'½':'')+'☆'.repeat(5-f-h);}
+
+  function renderProducts(list){
+    const grid=document.getElementById('productsGrid');
+    const empty=document.getElementById('emptyMsg');
+    if(!list.length){grid.innerHTML='';empty.style.display='block';return;}
+    empty.style.display='none';
+    grid.innerHTML=list.map(p=>`
+      <div class="product-card" onclick="openModal('${p.id}')">
+        <div class="product-img-wrap">
+          ${p.imageUrl?`<img src="${p.imageUrl}" alt="${p.name}" loading="lazy" />`:`<div class="product-img-placeholder">👘</div>`}
+          ${p.oldPrice?`<div class="product-badge">SALE</div>`:''}
+          <button class="wishlist-btn" onclick="toggleWish(event,'${p.id}')" id="wish_${p.id}">🤍</button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">${p.category}</div>
+          <div class="product-name">${p.name}</div>
+          ${p.rating?`<div class="product-rating"><span class="stars">${getStars(p.rating)}</span><span class="rating-count">(${p.reviews||0})</span></div>`:''}
+          <div class="product-price-row">
+            <div class="price-group"><span class="price">₹${p.price}</span>${p.oldPrice?`<span class="price-old">₹${p.oldPrice}</span>`:''}</div>
+            <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="buy-btn" onclick="event.stopPropagation()">Buy Now</a>
           </div>
         </div>
-      `).join('');
-    }
+      </div>`).join('');
+  }
 
-    function getFiltered() {
-      let list = products;
-      const q = document.getElementById('searchInput').value.toLowerCase();
-      if(currentFilter !== 'All') list = list.filter(p => p.category === currentFilter);
-      if(q) list = list.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
-      return list;
-    }
-    function refresh() { renderProducts(getFiltered()); }
-    function setFilter(f, btn) { currentFilter = f; document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active')); btn.classList.add('active'); refresh(); }
-    function filterByCategory(cat) { currentFilter = cat; document.querySelectorAll('.filter-tab').forEach(t => t.classList.toggle('active', t.textContent.includes(cat))); document.getElementById('products').scrollIntoView({behavior:'smooth'}); refresh(); }
-    function filterProducts() { refresh(); }
+  function getFiltered(){let list=products;const q=document.getElementById('searchInput').value.toLowerCase();if(currentFilter!=='All')list=list.filter(p=>p.category===currentFilter);if(q)list=list.filter(p=>p.name.toLowerCase().includes(q)||p.category.toLowerCase().includes(q));return list;}
+  function refresh(){renderProducts(getFiltered());}
+  window.setFilter=function(f,btn){currentFilter=f;document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');refresh();}
+  window.filterByCategory=function(cat){currentFilter=cat;document.querySelectorAll('.filter-tab').forEach(t=>t.classList.toggle('active',t.textContent.includes(cat)));document.getElementById('products').scrollIntoView({behavior:'smooth'});refresh();}
+  window.filterProducts=refresh;
 
-    function openModal(id) {
-      const p = products.find(x => x.id === id); if(!p) return;
-      document.getElementById('modalCat').textContent = p.category;
-      document.getElementById('modalTitle').textContent = p.name;
-      document.getElementById('modalStars').textContent = p.rating ? getStars(p.rating) : '★★★★★';
-      document.getElementById('modalReviews').textContent = p.reviews ? `(${p.reviews} reviews)` : '';
-      document.getElementById('modalDesc').textContent = p.desc || '';
-      document.getElementById('modalPrice').textContent = '₹' + p.price;
-      document.getElementById('modalOldPrice').textContent = p.oldPrice ? 'MRP ₹' + p.oldPrice : '';
-      document.getElementById('modalBuyBtn').href = p.link;
-      document.getElementById('modalImg').innerHTML = p.image
-        ? `<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover"/>`
-        : `<div class="modal-img-placeholder">👘</div>`;
-      document.getElementById('modalOverlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal(e) { if(e.target === document.getElementById('modalOverlay')) closeModalDirect(); }
-    function closeModalDirect() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+  window.openModal=function(id){
+    const p=products.find(x=>x.id===id);if(!p)return;
+    document.getElementById('modalCat').textContent=p.category;
+    document.getElementById('modalTitle').textContent=p.name;
+    document.getElementById('modalStars').textContent=p.rating?getStars(p.rating):'★★★★★';
+    document.getElementById('modalReviews').textContent=p.reviews?`(${p.reviews} reviews)`:'';
+    document.getElementById('modalDesc').textContent=p.desc||'';
+    document.getElementById('modalPrice').textContent='₹'+p.price;
+    document.getElementById('modalOldPrice').textContent=p.oldPrice?'MRP ₹'+p.oldPrice:'';
+    document.getElementById('modalBuyBtn').href=p.link;
+    document.getElementById('modalImg').innerHTML=p.imageUrl?`<img src="${p.imageUrl}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover"/>`:`<div class="modal-img-placeholder">👘</div>`;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  window.closeModal=function(e){if(e.target===document.getElementById('modalOverlay'))closeModalDirect();}
+  window.closeModalDirect=function(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+  window.toggleWish=function(e,id){e.stopPropagation();const btn=document.getElementById('wish_'+id);if(btn.classList.toggle('active')){btn.textContent='❤️';showToast('Wishlist mein add ❤️');}else{btn.textContent='🤍';showToast('Wishlist se remove');}}
 
-    function toggleWish(e, id) {
-      e.stopPropagation();
-      const btn = document.getElementById('wish_' + id);
-      if(btn.classList.toggle('active')) { btn.textContent = '❤️'; showToast('Wishlist mein add ho gaya ❤️'); }
-      else { btn.textContent = '🤍'; showToast('Wishlist se remove ho gaya'); }
-    }
+  window.openAdminLogin=function(){if(isAdmin){document.getElementById('adminPanel').scrollIntoView({behavior:'smooth'});return;}document.getElementById('pwOverlay').classList.add('open');document.getElementById('pwInput').value='';document.getElementById('pwError').style.display='none';setTimeout(()=>document.getElementById('pwInput').focus(),300);}
+  window.closePwModal=function(){document.getElementById('pwOverlay').classList.remove('open');}
+  window.checkPassword=function(){const pw=document.getElementById('pwInput').value;if(pw===getPassword()){isAdmin=true;closePwModal();document.getElementById('adminPanel').classList.add('visible');renderAdminList();document.getElementById('adminPanel').scrollIntoView({behavior:'smooth'});showToast('✅ Admin login successful!');}else{document.getElementById('pwError').style.display='block';document.getElementById('pwInput').value='';}}
+  window.logoutAdmin=function(){isAdmin=false;document.getElementById('adminPanel').classList.remove('visible');showToast('👋 Logout ho gaye');}
+  window.openChangePw=function(){document.getElementById('changePwOverlay').classList.add('open');['oldPwInput','newPwInput','confirmPwInput'].forEach(id=>document.getElementById(id).value='');document.getElementById('changePwError').style.display='none';}
+  window.closeChangePw=function(){document.getElementById('changePwOverlay').classList.remove('open');}
+  window.changePassword=function(){const old=document.getElementById('oldPwInput').value;const nw=document.getElementById('newPwInput').value;const confirm=document.getElementById('confirmPwInput').value;const errEl=document.getElementById('changePwError');errEl.style.display='none';if(old!==getPassword()){errEl.textContent='❌ Purana password galat!';errEl.style.display='block';return;}if(nw.length<6){errEl.textContent='❌ 6+ characters chahiye!';errEl.style.display='block';return;}if(nw!==confirm){errEl.textContent='❌ Password match nahi!';errEl.style.display='block';return;}localStorage.setItem('xzon_pw',nw);closeChangePw();showToast('✅ Password change ho gaya!');}
 
-    function showToast(msg) {
-      const t = document.getElementById('toast');
-      t.textContent = msg; t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2800);
-    }
+  function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+  window.showToast=showToast;
 
-    loadProducts();
-  </script>
+  loadProducts();
+</script>
 </body>
 </html>
